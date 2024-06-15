@@ -1,0 +1,5 @@
+@layer base {
+    h3 {
+      @apply tracking-widest; 
+    }
+  }

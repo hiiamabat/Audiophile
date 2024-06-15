@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '/css/styles.css';
+
+:root {
+  font-family: Manrope, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #777777;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
