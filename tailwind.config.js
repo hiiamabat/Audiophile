@@ -20,7 +20,7 @@ export default {
           light: '#FAFAFA',
           medium: '#4C4C4C', // lighter shade of secondary
           darker: '#F1F1F1', // darker shade of secondary
-          darkest: '#777777',
+          darkest: '#626262',
           black: '#000000',
         },
       },

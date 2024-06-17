@@ -16,7 +16,7 @@ const Nav: React.FC = () => {
 
   return (
     <header className="bg-black">
-      <nav className="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8 border-solid border-b-1 border-white xl:px-0 py-6">
+      <nav className="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8 border-solid border-b-1 border-secondary-medium xl:px-0 py-6">
         <div className="flex items-center justify-between h-16">
           {/* Left side (Menu button) */}
           <div className="flex items-center md:flex-grow-0 xl:hidden relative">
