@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/shared/desktop/logo.svg';
+import logo from '../assets/images/shared/desktop/logo.svg';
 import fbIcon from '../assets/images/home/mobile/fb.svg';
 import instaIcon from '../assets/images/home/mobile/insta.svg';
 import twitterIcon from '../assets/images/home/mobile/twitter.png';
@@ -13,35 +13,38 @@ const Footer: React.FC = () => {
     <footer className="bg-secondary-black px-5 md:text-left md:px-7 pb-6">
       <div className="max-w-7xl 2xl:mx-auto">
         <div className="bg-primary h-1 px-4 px-6 lg:px-8 w-24 m-auto md:m-0 md:w-24"></div>
-        <Link to="/">
-          <img
-            src={logo}
-            alt="Audiophile Logo"
-            className="w-32 h-16 pt-6 m-auto md:m-0"
-          />
-        </Link>
-        <ul className="text-white text-xs tracking-widest font-bold pt-6 md:flex md:gap-6 xl:text-sm">
-          <li className="py-3">
-            <Link className="hover:text-primary" to="/">
-              HOME
-            </Link>
-          </li>
-          <li className="py-3">
-            <Link className="hover:text-primary" to="/headphones">
-              HEADPHONES
-            </Link>
-          </li>
-          <li className="py-3">
-            <Link className="hover:text-primary" to="/speakers">
-              SPEAKERS
-            </Link>
-          </li>
-          <li className="pt-3 pb-6">
-            <Link className="hover:text-primary" to="/earphones">
-              EARPHONES
-            </Link>
-          </li>
-        </ul>
+        <div className="xl:flex xl:justify-between xl:items-center xl:mb-6">
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Audiophile Logo"
+              className="pt-6 m-auto md:m-0"
+            />
+          </Link>
+
+          <ul className="text-white text-xs tracking-widest font-bold pt-6 md:flex md:gap-6 xl:text-sm">
+            <li className="py-3">
+              <Link className="hover:text-primary" to="/">
+                HOME
+              </Link>
+            </li>
+            <li className="py-3">
+              <Link className="hover:text-primary" to="/headphones">
+                HEADPHONES
+              </Link>
+            </li>
+            <li className="py-3">
+              <Link className="hover:text-primary" to="/speakers">
+                SPEAKERS
+              </Link>
+            </li>
+            <li className="pt-3 pb-6">
+              <Link className="hover:text-primary" to="/earphones">
+                EARPHONES
+              </Link>
+            </li>
+          </ul>
+        </div>
         <p className="text-secondary-darkest pb-6 xl:w-3/4 xl:text-lg">
           Audiophile is an all in one stop to fulfill your audio needs. We're a
           small team of music lovers and sound specialists who are devoted to

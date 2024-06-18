@@ -39,7 +39,7 @@ export { Card };
 
 const AudioGear: React.FC = () => {
   return (
-    <section className="max-w-7xl 2xl:mx-auto bg-white pt-0 pb-20 px-7 xl:m-auto 2xl:p-0 2xl:flex 2xl:flex-row-reverse 2xl:my-16">
+    <section className="max-w-7xl 2xl:mx-auto bg-white pt-0 pb-20 px-7 xl:m-auto 2xl:mt-32 2xl:p-0 2xl:flex 2xl:flex-row-reverse 2xl:my-16">
       <div className="2xl:w-1/2 2xl:flex">
         <picture className="w-auto rounded-default mb-10 mx-auto 2xl:ml-auto 2xl:mr-0">
           <source media="(min-width: 1024px)" srcSet={audioGearImageDesktop} />
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/headphones"
-              className="bg-primary py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light transition duration-300 ease-in-out py-3 px-6"
+              className="bg-primary py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light hover:text-secondary-black transition duration-300 ease-in-out py-3 px-6"
             >
               SEE PRODUCT
             </Link>

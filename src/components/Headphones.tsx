@@ -16,6 +16,42 @@ import xx59ImageTablet from '../assets/images/product-xx59-headphones/tablet/ima
 import xx59ImageDesktop from '../assets/images/product-xx59-headphones/desktop/image-category-page-preview.jpg';
 
 const Headphones: React.FC = () => {
+  const headphones = [
+    {
+      id: '1',
+      name: 'XX99 Mark II',
+      imageMobile: xx992ImageMobile,
+      imageTablet: xx992ImageTablet,
+      imageDesktop: xx992ImageDesktop,
+      newProduct: true,
+      content:
+        'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
+      linkTo: '/headphones/1',
+    },
+    {
+      id: '2',
+      name: 'XX99 Mark I',
+      imageMobile: xx991ImageMobile,
+      imageTablet: xx991ImageTablet,
+      imageDesktop: xx991ImageDesktop,
+      newProduct: false,
+      content:
+        'As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.',
+      linkTo: '/headphones/2',
+    },
+    {
+      id: '3',
+      name: 'XX59',
+      imageMobile: xx59ImageMobile,
+      imageTablet: xx59ImageTablet,
+      imageDesktop: xx59ImageDesktop,
+      newProduct: false,
+      content:
+        'Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.',
+      linkTo: '/headphones/3',
+    },
+  ];
+
   return (
     <main>
       <section className="bg-black text-white px-4 py-6 flex flex-col">
@@ -23,35 +59,20 @@ const Headphones: React.FC = () => {
           HEADPHONES
         </h1>
       </section>
-      <Product
-        imageMobile={xx992ImageMobile}
-        imageTablet={xx992ImageTablet}
-        imageDesktop={xx992ImageDesktop}
-        title="XX99 MARK II HEADPHONES"
-        newProduct={true}
-        content="The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium 
-  headphone experience by reproducing the balanced depth and precision of studio-quality sound."
-        linkTo="/xx99-mark-2-headphones"
-      />
-      <Product
-        imageMobile={xx991ImageMobile}
-        imageTablet={xx991ImageTablet}
-        imageDesktop={xx991ImageDesktop}
-        title="XX99 MARK I HEADPHONES"
-        newProduct={false}
-        content="As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go."
-        linkTo="/xx99-mark-1-headphones"
-      />
-      <Product
-        imageMobile={xx59ImageMobile}
-        imageTablet={xx59ImageTablet}
-        imageDesktop={xx59ImageDesktop}
-        title="XX59 HEADPHONES"
-        newProduct={false}
-        content="Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move."
-        linkTo="/xx59-headphones"
-      />
-      <section className="max-w-7xl mx-auto bg-white pb-20 px-4 sm:flex justify-center sm:pt-1 md:mt-20 md:mb-20 md:p-0">
+      {headphones.map((headphone, index) => (
+        <Product
+          key={headphone.id}
+          imageMobile={headphone.imageMobile}
+          imageTablet={headphone.imageTablet}
+          imageDesktop={headphone.imageDesktop}
+          title={headphone.name}
+          newProduct={headphone.newProduct}
+          content={headphone.content}
+          linkTo={headphone.linkTo}
+          isFlipped={index % 2 !== 0}
+        />
+      ))}
+      <section className="max-w-7xl mx-auto bg-white pb-20 px-4 sm:flex justify-center sm:pt-1 md:mt-20 md:mb-20 md:p-0 lg:my-24">
         <Card
           imageSrc={headphonesImage}
           title="HEADPHONES"
