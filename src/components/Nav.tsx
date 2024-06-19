@@ -38,13 +38,9 @@ const Nav: React.FC = () => {
           </div>
 
           {/* Center (Logo) */}
-          <div className="flex justify-center md:justify-start">
+          <div className="flex justify-center md:justify-start xl:ml-6">
             <Link to="/">
-              <img
-                src={logo}
-                alt="Logo"
-                className="h-8 w-auto md:ml-14 xl:m-0"
-              />
+              <img src={logo} alt="Logo" className="h-8 w-auto" />
             </Link>
           </div>
 

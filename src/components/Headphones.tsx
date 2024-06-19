@@ -1,56 +1,19 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Product from './Product';
-import { Card } from './Home';
-import { AudioGear } from './Home';
-import headphonesImage from '../assets/images/product-xx99-mark-one-headphones/mobile/headphones-cta.png';
-import speakersImage from '../assets/images/product-zx9-speaker/mobile/speakers-cta.png';
-import earphonesImage from '../assets/images/product-yx1-earphones/mobile/earphones-cta.png';
-import xx992ImageMobile from '../assets/images/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg';
-import xx992ImageTablet from '../assets/images/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg';
-import xx992ImageDesktop from '../assets/images/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg';
-import xx991ImageMobile from '../assets/images/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg';
-import xx991ImageTablet from '../assets/images/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg';
-import xx991ImageDesktop from '../assets/images/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg';
-import xx59ImageMobile from '../assets/images/product-xx59-headphones/mobile/image-category-page-preview.jpg';
-import xx59ImageTablet from '../assets/images/product-xx59-headphones/tablet/image-category-page-preview.jpg';
-import xx59ImageDesktop from '../assets/images/product-xx59-headphones/desktop/image-category-page-preview.jpg';
+import CategoryCards from './CategoryCards';
+import AudioGear from './AudioGear';
+import Products from './ProductsData';
 
 const Headphones: React.FC = () => {
-  const headphones = [
-    {
-      id: '1',
-      name: 'XX99 Mark II',
-      imageMobile: xx992ImageMobile,
-      imageTablet: xx992ImageTablet,
-      imageDesktop: xx992ImageDesktop,
-      newProduct: true,
-      content:
-        'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
-      linkTo: '/headphones/1',
-    },
-    {
-      id: '2',
-      name: 'XX99 Mark I',
-      imageMobile: xx991ImageMobile,
-      imageTablet: xx991ImageTablet,
-      imageDesktop: xx991ImageDesktop,
-      newProduct: false,
-      content:
-        'As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.',
-      linkTo: '/headphones/2',
-    },
-    {
-      id: '3',
-      name: 'XX59',
-      imageMobile: xx59ImageMobile,
-      imageTablet: xx59ImageTablet,
-      imageDesktop: xx59ImageDesktop,
-      newProduct: false,
-      content:
-        'Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.',
-      linkTo: '/headphones/3',
-    },
-  ];
+  const navigate = useNavigate();
+  const headphones = Products.filter(
+    (product) => product.category === 'headphones',
+  );
+
+  const handleProductClick = (id: number) => {
+    navigate(`/headphones/${id}`);
+  };
 
   return (
     <main>
@@ -59,28 +22,26 @@ const Headphones: React.FC = () => {
           HEADPHONES
         </h1>
       </section>
-      {headphones.map((headphone, index) => (
-        <Product
-          key={headphone.id}
-          imageMobile={headphone.imageMobile}
-          imageTablet={headphone.imageTablet}
-          imageDesktop={headphone.imageDesktop}
-          title={headphone.name}
-          newProduct={headphone.newProduct}
-          content={headphone.content}
-          linkTo={headphone.linkTo}
-          isFlipped={index % 2 !== 0}
-        />
-      ))}
-      <section className="max-w-7xl mx-auto bg-white pb-20 px-4 sm:flex justify-center sm:pt-1 md:mt-20 md:mb-20 md:p-0 lg:my-24">
-        <Card
-          imageSrc={headphonesImage}
-          title="HEADPHONES"
-          linkTo="/headphones"
-        />
-        <Card imageSrc={speakersImage} title="SPEAKERS" linkTo="/speakers" />
-        <Card imageSrc={earphonesImage} title="EARPHONES" linkTo="/earphones" />
+      <section>
+        {headphones.map((headphone, index) => (
+          <div
+            key={headphone.id}
+            onClick={() => handleProductClick(headphone.id)}
+          >
+            <Product
+              imageMobile={headphone.imageMobile}
+              imageTablet={headphone.imageTablet}
+              imageDesktop={headphone.imageDesktop}
+              title={headphone.name}
+              newProduct={headphone.newProduct}
+              description={headphone.description}
+              linkTo={headphone.linkTo}
+              isFlipped={index % 2 !== 0}
+            />
+          </div>
+        ))}
       </section>
+      <CategoryCards />
       <AudioGear />
     </main>
   );

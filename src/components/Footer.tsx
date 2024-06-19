@@ -10,8 +10,8 @@ import twitterIconHover from '../assets/images/home/mobile/twitter-orange.svg';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-secondary-black px-5 md:text-left md:px-7 pb-6">
-      <div className="max-w-7xl 2xl:mx-auto">
+    <footer className="bg-secondary-black px-5 md:text-left md:px-10 pb-6">
+      <div className="max-w-7xl xl:mx-auto">
         <div className="bg-primary h-1 px-4 px-6 lg:px-8 w-24 m-auto md:m-0 md:w-24"></div>
         <div className="xl:flex xl:justify-between xl:items-center xl:mb-6">
           <Link to="/">
