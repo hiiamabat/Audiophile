@@ -2,21 +2,19 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 interface ProductProps {
-  imageMobile: string;
-  imageTablet: string;
-  imageDesktop: string;
+  name: string;
+  slug: string;
+  image: { mobile: string; tablet: string; desktop: string };
   newProduct: boolean;
-  title: string;
   description: string;
   isFlipped?: boolean;
 }
 
 const Product: React.FC<ProductProps> = ({
-  imageMobile,
-  imageTablet,
-  imageDesktop,
+  name,
+  slug,
+  image,
   newProduct,
-  title,
   description,
   isFlipped = false,
 }) => {
@@ -26,11 +24,11 @@ const Product: React.FC<ProductProps> = ({
     >
       <div className="w-full lg:w-1/2">
         <picture className="w-auto rounded-default mb-10 mx-auto 2xl:ml-auto 2xl:mr-0">
-          <source media="(min-width: 1024px)" srcSet={imageDesktop} />
-          <source media="(min-width: 640px)" srcSet={imageTablet} />
+          <source srcSet={image.desktop} media="(min-width: 1024px)" />
+          <source srcSet={image.tablet} media="(min-width: 768px)" />
           <img
-            src={imageMobile}
-            alt={title}
+            src={image.mobile}
+            alt={name}
             className="object-cover w-full mx-auto"
           />
         </picture>
@@ -42,13 +40,13 @@ const Product: React.FC<ProductProps> = ({
           </h3>
         )}
         <h2 className="text-2xl text-black font-bold tracking-wide py-6 sm:text-4xl lg:w-4/5">
-          {title}
+          {name}
         </h2>
         <p className="text-sm text-secondary-darkest font-normal tracking-widest sm:w-4/5 sm:m-auto lg:m-0">
           {description}
         </p>
         <Link
-          to={linkTo}
+          to={slug}
           className="inline-flex items-center justify-center text-sm font-semibold tracking-wide bg-primary flex-auto my-6 mx-auto text-white hover:text-secondary-black hover:bg-primary-light transition duration-300 ease-in-out py-3 px-6"
         >
           SEE PRODUCT

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import headphonesImage from '../assets/images/product-xx99-mark-one-headphones/mobile/headphones-cta.png';
-import speakersImage from '../assets/images/product-zx9-speaker/mobile/speakers-cta.png';
-import earphonesImage from '../assets/images/product-yx1-earphones/mobile/earphones-cta.png';
+import headphonesImage from '../assets/images/shared/mobile/headphones.png';
+import speakersImage from '../assets/images/shared/mobile/speakers.png';
+import earphonesImage from '../assets/images/shared/mobile/earphones.png';
 
 interface CardProps {
   imageSrc: string;
@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, title, linkTo }) => {
 
 const CategoryCards: React.FC = () => {
   return (
-    <section className="max-w-7xl 2xl:mx-auto bg-white pb-20 px-3 flex flex-col sm:flex-row sm:pt-10 sm:w-full sm:justify-between sm:m-0 md:w-auto md:mx-6 md:m-auto xl:m-auto">
+    <section className="max-w-7xl 2xl:mx-auto bg-white pt-10 pb-20 px-3 flex flex-col sm:flex-row sm:pt-10 sm:w-full sm:justify-between sm:m-0 md:w-auto md:mx-6 md:m-auto xl:m-auto">
       <Card
         imageSrc={headphonesImage}
         title="HEADPHONES"

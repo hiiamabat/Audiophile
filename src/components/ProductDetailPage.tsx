@@ -1,19 +1,24 @@
 import * as React from 'react';
-import { useContext } from 'react';
-import { CartContext } from './CartContext';
-import { useParams } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Products from './ProductsData';
+import { CartContext } from './CartContext';
 
-interface DetailProps {
-  imageMobile: string;
-  imageTablet: string;
-  imageDesktop: string;
+interface Product {
+  id: number;
+  name: string;
+  slug: string;
+  image: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
   newProduct: boolean;
-  title: string;
   description: string;
   price: number;
+  category: string;
   features: string;
-  included: { quantity: number; item: string }[];
+  includes: { quantity: number; item: string }[];
   gallery: { mobile: string; tablet: string; desktop: string }[];
   suggestions: {
     slug: string;
@@ -22,39 +27,81 @@ interface DetailProps {
   }[];
 }
 
-const ProductDetailPage: React.FC<DetailProps> = ({
-  imageMobile,
-  imageTablet,
-  imageDesktop,
-  newProduct,
-  title,
-  description,
-  price,
-  features,
-  included,
-  gallery,
-  suggestions,
-}) => {
-  const { addToCart } = useContext(CartContext);
-
+const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const product = productData.find((item) => item.id === id);
+  const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  if (!product) {
-    return <div>Product not found</div>;
+  const [product, setProduct] = useState<Product | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
+
+  useEffect(() => {
+    const foundProduct = Products.find((item) => item.slug === id) as
+      | Product
+      | undefined;
+    if (foundProduct) {
+      setProduct(foundProduct);
+      setError(null);
+    } else {
+      setError('Product not found');
+      setProduct(null);
+    }
+  }, [id]);
+
+  if (error) {
+    return <div>{error}</div>;
   }
 
-  const handleAddToCart = () => {
-    const item = {
-      title,
-      price,
-      quantity: 1,
-    };
-    addToCart(item);
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
+  const goBack = () => {
+    navigate(-1);
   };
 
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      const item = {
+        title: product.name,
+        price: product.price,
+        quantity: quantity,
+      };
+      addToCart(item);
+    }
+  };
+
+  const {
+    image: { mobile: imageMobile, tablet: imageTablet, desktop: imageDesktop },
+    newProduct,
+    name: title,
+    description,
+    price,
+    features,
+    includes: included = [],
+    gallery = [],
+    suggestions = [],
+  } = product;
+
   return (
-    <section className="max-w-6xl lg:mx-auto bg-white pt-20 px-3 flex flex-col mx-6 lg:flex-row lg:justify-start lg:text-left lg:items-center">
+    <main className="max-w-6xl lg:mx-auto bg-white pt-4 px-3 flex flex-col mx-6 lg:flex-row lg:justify-start lg:text-left lg:items-center">
+      <button
+        className="flex justify-start mb-6 hover:text-primary transition duration-300 ease-in-out"
+        onClick={goBack}
+      >
+        Go Back
+      </button>
       <div className="w-full lg:w-1/2">
         <picture className="w-auto rounded-default mb-10 mx-auto 2xl:ml-auto 2xl:mr-0">
           <source media="(min-width: 1024px)" srcSet={imageDesktop} />
@@ -66,7 +113,7 @@ const ProductDetailPage: React.FC<DetailProps> = ({
           />
         </picture>
       </div>
-      <div className="w-full lg:w-1/2">
+      <div className="w-full lg:w-1/2 flex flex-col justify-start text-left">
         {newProduct && (
           <h3 className="mt-6 text-sm text-primary font-normal tracking-1em">
             NEW PRODUCT
@@ -75,18 +122,34 @@ const ProductDetailPage: React.FC<DetailProps> = ({
         <h2 className="text-2xl text-black font-bold tracking-wide py-6 sm:text-4xl lg:w-4/5">
           {title}
         </h2>
-        <p className="text-sm text-secondary-darkest font-normal tracking-widest sm:w-4/5 sm:m-auto lg:m-0">
+        <p className="text-sm text-secondary-darkest mb-6 font-normal tracking-widest sm:w-4/5 sm:m-auto lg:m-0">
           {description}
         </p>
         <p className="font-bold text-secondary-black">${price}</p>
-        <button
-          className="mt-6 bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-          onClick={handleAddToCart}
-        >
-          Add to Cart
-        </button>
+        <div className="mt-6 flex items-center">
+          <div className="flex items-center mr-4">
+            <button
+              className="bg-gray-200 text-gray-600 rounded-l px-2 py-1 hover:bg-gray-300 focus:outline-none"
+              onClick={decrementQuantity}
+            >
+              -
+            </button>
+            <span className="bg-gray-100 text-gray-800 font-semibold px-4 py-1">
+              {quantity}
+            </span>
+            <button
+              className="bg-gray-200 text-gray-600 rounded-r px-2 py-1 hover:bg-gray-300 focus:outline-none"
+              onClick={incrementQuantity}
+            >
+              +
+            </button>
+          </div>
+          <button className="btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+        </div>
         <div>
-          <h3 className="text-lg font-bold mt-6">Features</h3>
+          <h3 className="text-lg mt-7 mb-3">Features</h3>
           <p className="text-sm text-secondary-darkest font-normal tracking-widest sm:w-4/5 sm:m-auto lg:m-0">
             {features}
           </p>
@@ -130,9 +193,7 @@ const ProductDetailPage: React.FC<DetailProps> = ({
               <h4 className="text-sm font-bold mt-2">{suggestion.name}</h4>
               <button
                 className="mt-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-                onClick={() =>
-                  (window.location.href = `/product/${suggestion.slug}`)
-                }
+                onClick={() => navigate(`/products/${suggestion.slug}`)}
               >
                 See Product
               </button>
@@ -140,7 +201,7 @@ const ProductDetailPage: React.FC<DetailProps> = ({
           ))}
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 

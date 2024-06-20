@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import speakerImage from '../assets/images/home/mobile/speaker.png';
+import speakerImage from '../assets/images/home/mobile/speakerfeatimg.png';
 import CategoryCards from './CategoryCards';
 import AudioGear from './AudioGear';
 
@@ -14,17 +14,14 @@ const Home: React.FC = () => {
             <h3 className="text-sm text-secondary-darkest font-semibold tracking-1em pb-4">
               NEW PRODUCT
             </h3>
-            <h1 className="text-5xl font-semibold mb-4 uppercase sm:text-7xl md:w-2/3 xl:text-left">
+            <h1 className="text-4xl font-semibold mb-4 uppercase sm:text-7xl md:w-2/3 xl:text-left">
               XX99 Mark II Headphones
             </h1>
             <p className="text-lg w-3/5 m-auto mb-8 text-secondary-light sm:w-3/4 sm:text-xl md:w-7/12 md:m-0 md:mb-8 xl:text-left">
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
-            <Link
-              to="/headphones"
-              className="bg-primary py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light hover:text-secondary-black transition duration-300 ease-in-out py-3 px-6"
-            >
+            <Link to="/headphones" className="btn">
               SEE PRODUCT
             </Link>
           </div>
@@ -40,7 +37,7 @@ const Home: React.FC = () => {
           <img
             src={speakerImage}
             alt="ZX9 Speaker"
-            className="object-cover -mt-10 w-4/5 m-auto md:w-3/5 md:-mt-20 2xl:w-4/5 2xl:mt-0 2xl:mt-auto 2xl:-mb-[6rem] 2xl:pt-[5.5rem]"
+            className="object-cover -mt-10 w-4/5 m-auto md:w-3/5 md:-mt-20 2xl:w-4/5 2xl:mt-0 2xl:mt-auto 2xl:-mb-[5rem] 2xl:pt-[5.5rem]"
           />
         </div>
         <div className="2xl:w-2/5  2xl:justify-start 2xl:text-left 2xl:justify-self-start">
@@ -62,7 +59,7 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* ZX7 SPEAKER SECTION */}
-      <section className="max-w-7xl bg-speaker-pic-mobile bg-cover bg-right-top xs:bg-speaker-pic-tablet xs:bg-cover xs:bg-center flex rounded-lg w-auto m-auto mx-3 mt-8 pb-20 px-6 h-96 relative md:mx-10 xl:m-auto xl:mt-10">
+      <section className="max-w-7xl bg-speaker-pic-mobile bg-cover bg-right-top xs:bg-speaker-pic-tablet xs:bg-cover xs:bg-center flex rounded-lg w-auto m-auto mx-3 mt-8 pb-20 px-6 h-96 relative md:mx-10 xl:m-auto xl:mt-10 xl:bg-speaker-pic-desktop">
         <div className="absolute top-[30%] flex justify-start items-start flex-col 2xl:p-20 2xl:top-14">
           <h3 className="text-2xl text-black font-bold tracking-widest pb-4 uppercase justify-flex-start md:text-3xl md:mb-6">
             ZX7 SPEAKER

@@ -11,8 +11,10 @@ const Headphones: React.FC = () => {
     (product) => product.category === 'headphones',
   );
 
-  const handleProductClick = (id: number) => {
-    navigate(`/headphones/${id}`);
+  const handleProductClick = (slug?: string) => {
+    if (slug) {
+      navigate(`/headphones/${slug}`);
+    }
   };
 
   return (
@@ -26,16 +28,18 @@ const Headphones: React.FC = () => {
         {headphones.map((headphone, index) => (
           <div
             key={headphone.id}
-            onClick={() => handleProductClick(headphone.id)}
+            onClick={() => handleProductClick(headphone.slug)}
           >
             <Product
-              imageMobile={headphone.imageMobile}
-              imageTablet={headphone.imageTablet}
-              imageDesktop={headphone.imageDesktop}
-              title={headphone.name}
+              name={headphone.name}
+              slug={headphone.slug || ''}
+              image={{
+                mobile: headphone.image.mobile,
+                tablet: headphone.image.tablet,
+                desktop: headphone.image.desktop,
+              }}
               newProduct={headphone.newProduct}
               description={headphone.description}
-              linkTo={headphone.linkTo}
               isFlipped={index % 2 !== 0}
             />
           </div>

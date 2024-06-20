@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './src/css/styles.css',
+  ],
   theme: {
     extend: {
       screens: {
@@ -49,6 +53,8 @@ export default {
           "url('src/assets/images/home/desktop/image-hero.jpg')",
         'speaker-bg-desktop':
           "url('src/assets/images/home/desktop/speaker-bg-desktop.jpg')",
+        'speaker-pic-desktop':
+          "url('src/assets/images/home/desktop/image-speaker-zx7.jpg')",
       },
       borderWidth: {
         1: '1px',

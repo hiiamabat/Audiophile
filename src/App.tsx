@@ -11,6 +11,7 @@ import Checkout from './components/Checkout';
 import NotFound from './components/NotFound';
 import ProductDetailPage from './components/ProductDetailPage';
 import { CartProvider } from './components/CartContext';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import './App.css';
 
@@ -19,18 +20,20 @@ const App: React.FC = () => {
     <CartProvider>
       <Router>
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/headphones" element={<Headphones />} />
-          <Route path="/headphones/:id" element={<ProductDetailPage />} />
-          <Route path="/speakers" element={<Speakers />} />
-          <Route path="/speakers/:id" element={<ProductDetailPage />} />
-          <Route path="/earphones" element={<Earphones />} />
-          <Route path="/earphones/:id" element={<ProductDetailPage />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/headphones" element={<Headphones />} />
+            <Route path="/headphones/:id" element={<ProductDetailPage />} />
+            <Route path="/speakers" element={<Speakers />} />
+            <Route path="/speakers/:id" element={<ProductDetailPage />} />
+            <Route path="/earphones" element={<Earphones />} />
+            <Route path="/earphones/:id" element={<ProductDetailPage />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ErrorBoundary>
         <Footer />
       </Router>
     </CartProvider>
