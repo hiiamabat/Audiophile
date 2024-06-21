@@ -149,38 +149,40 @@ const ProductDetailPage: React.FC = () => {
           </button>
         </div>
         <div>
-          <h3 className="text-lg mt-7 mb-3">Features</h3>
-          <p className="text-sm text-secondary-darkest font-normal tracking-widest sm:w-4/5 sm:m-auto lg:m-0">
+          <h3 className="h3-default mt-14 mb-6">Features</h3>
+          <p className="whitespace-pre-line text-sm text-secondary-darkest font-normal tracking-widest mb-8 sm:w-4/5 sm:m-auto lg:m-0">
             {features}
           </p>
         </div>
         <div>
           <h3 className="text-lg font-bold mt-6">In the box</h3>
-          <ul className="text-sm text-secondary-darkest font-normal tracking-widest sm:w-4/5 sm:m-auto lg:m-0">
+          <ul className="text-sm text-secondary-darkest font-normal sm:w-4/5 sm:m-auto lg:m-0">
             {included.map((item, index) => (
               <li key={index} className="mt-2">
-                {item.quantity}x {item.item}
+                <span className="font-bold text-primary mr-6">
+                  {item.quantity}x
+                </span>{' '}
+                {item.item}
               </li>
             ))}
           </ul>
         </div>
       </div>
       <div className="w-full mt-10 lg:mt-0">
-        <h3 className="text-lg font-bold mt-6">Gallery</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid mt-12 grid-cols-1 md:grid-cols-2 gap-4">
           {gallery.map((image, index) => (
             <img
               key={index}
               src={image.mobile}
               srcSet={`${image.tablet} 640w, ${image.desktop} 1024w`}
               alt={`${title} gallery image ${index + 1}`}
-              className="object-cover w-full rounded-default"
+              className={`w-full rounded-default ${index === 2 ? 'gallery-image-tall' : ''}`}
             />
           ))}
         </div>
       </div>
       <div className="w-full mt-10 lg:mt-0">
-        <h3 className="text-lg font-bold mt-6">You may also like</h3>
+        <h3 className="text-lg font-bold mt-6 mb-8">You may also like</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {suggestions.map((suggestion, index) => (
             <div key={index} className="text-center">
