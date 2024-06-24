@@ -12,22 +12,22 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ imageSrc, title, linkTo }) => {
   return (
-    <div className="mt-24 bg-secondary-darker rounded-default flex flex-col relative w-full h-full sm:h-fit sm:mx-3 sm:first:ml-0 sm:last:mr-0">
+    <div className="relative flex flex-col w-full h-full mt-24 bg-secondary-darker rounded-default sm:h-fit sm:mx-3 sm:first:ml-0 sm:last:mr-0">
       <img
         src={imageSrc}
         alt={`${title} image`}
-        className="object-cover w-4/5 xs:w-2/5 xs:-top-15 m-auto absolute -top-20 sm:-top-10 sm:w-4/5 left-1/2 -translate-x-1/2 md:w-3/5 lg:-top-16"
+        className="absolute object-cover w-4/5 m-auto -translate-x-1/2 xs:w-2/5 xs:-top-15 -top-20 sm:-top-10 sm:w-4/5 left-1/2 md:w-3/5 lg:-top-16"
       />
-      <h2 className="text-xl text-black font-bold tracking-wide mt-24">
+      <h2 className="mt-24 text-xl font-bold tracking-wide text-black">
         {title}
       </h2>
       <Link
         to={linkTo}
-        className="flex items-center justify-center text-sm font-semibold tracking-wide text-secondary-darkest hover:text-primary transition duration-300 ease-in-out py-3 px-6 mt-4"
+        className="flex items-center justify-center px-6 py-3 mt-4 text-sm font-semibold tracking-wide transition duration-300 ease-in-out text-secondary-darkest hover:text-primary"
         aria-label={`Shop for ${title}`}
       >
         SHOP
-        <span className="text-primary ml-1 text-xl font-semibold">&gt;</span>
+        <span className="ml-1 text-xl font-semibold text-primary">&gt;</span>
       </Link>
     </div>
   );
@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, title, linkTo }) => {
 
 const CategoryCards: React.FC = () => {
   return (
-    <section className="max-w-7xl 2xl:mx-auto bg-white pt-10 pb-20 px-3 flex flex-col sm:flex-row sm:pt-10 sm:w-full sm:justify-between sm:m-0 md:w-auto md:mx-6 md:m-auto xl:m-auto">
+    <section className="flex flex-col px-3 pt-10 pb-20 bg-white max-w-7xl sm:flex-row sm:pt-10 sm:w-full sm:justify-between sm:m-0 md:w-auto md:mx-6 md:m-auto lg:mx-auto">
       <Card
         imageSrc={headphonesImage}
         title="HEADPHONES"

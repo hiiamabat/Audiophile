@@ -5,23 +5,23 @@ import audioGearImageDesktop from '../assets/images/shared/desktop/image-best-ge
 
 const AudioGear: React.FC = () => {
   return (
-    <section className="max-w-7xl 2xl:mx-auto bg-white pt-0 pb-20 mx-3 md:mx-10 xl:m-auto 2xl:mt-32 2xl:p-0 2xl:flex 2xl:flex-row-reverse 2xl:my-16">
-      <div className="2xl:w-1/2 2xl:flex">
-        <picture className="w-auto rounded-default mb-10 mx-auto 2xl:ml-auto 2xl:mr-0">
+    <section className="pt-0 pb-20 mx-3 bg-white max-w-7xl md:mx-10 xl:m-auto xl:mt-32 xl:p-0 xl:flex xl:flex-row-reverse xl:my-16">
+      <div className="xl:w-1/2 xl:flex">
+        <picture className="w-auto mx-auto mb-10 rounded-default xl:ml-auto xl:mr-0">
           <source media="(min-width: 1024px)" srcSet={audioGearImageDesktop} />
           <source media="(min-width: 640px)" srcSet={audioGearImageTablet} />
           <img
             src={audioGearImageMobile}
             alt="Man listening to headphones"
-            className="w-auto rounded-default mb-10 mx-auto"
+            className="w-auto mx-auto mb-10 rounded-default"
           />
         </picture>
       </div>
-      <div className="2xl:w-1/2 2xl:flex 2xl:flex-col 2xl:justify-center 2xl:items-start 2xl:text-left 2xl:px-10">
-        <h3 className="text-3xl text-secondary-black font-semibold tracking-wide pb-4 xl:text-5xl 2xl:w-full">
+      <div className="xl:w-1/2 xl:flex xl:flex-col xl:justify-center xl:items-start xl:text-left">
+        <h3 className="pb-4 text-3xl font-semibold tracking-wide text-secondary-black xl:text-5xl xl:w-4/5">
           BRINGING YOU THE <span className="text-primary">BEST</span> AUDIO GEAR
         </h3>
-        <p className="text-md xl:text-lg xl:w-3/4 xl:m-auto 2xl:m-0 2xl:w-full">
+        <p className="text-md xl:text-lg xl:w-4/5">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for

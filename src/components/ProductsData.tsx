@@ -2,7 +2,12 @@ interface Products {
   id: number;
   slug: string;
   name: string;
-  image: { mobile: string; tablet: string; desktop: string };
+  image: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+    tabletPreview: string;
+  };
   newProduct: boolean;
   description: string;
   price: number;
@@ -17,8 +22,12 @@ interface Products {
   }[];
 }
 
-const generateImagePath = (productSlug: string, device: string) => {
-  return `../src/assets/images/products/${productSlug}/${device}/product.jpg`;
+const generateImagePath = (
+  productSlug: string,
+  device: string,
+  suffix: string = '',
+) => {
+  return `../src/assets/images/products/${productSlug}/${device}/product${suffix}.jpg`;
 };
 
 const generateGalleryPath = (
@@ -53,6 +62,11 @@ const Products = [
         'xx99-mark-two-headphones',
 
         'desktop',
+      ),
+      tabletPreview: generateImagePath(
+        'xx99-mark-two-headphones',
+        'tablet',
+        '-preview',
       ),
     },
     newProduct: true,
@@ -117,6 +131,7 @@ const Products = [
       {
         slug: 'xx99-mark-one-headphones',
         name: 'XX99 Mark I Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-one-headphones',
@@ -135,6 +150,7 @@ const Products = [
       {
         slug: 'xx59-headphones',
         name: 'XX59 Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath('xx59-headphones', 'mobile'),
           tablet: generateSuggestionImagePath('xx59-headphones', 'tablet'),
@@ -144,6 +160,7 @@ const Products = [
       {
         slug: 'zx9-speaker',
         name: 'ZX9 Speaker',
+        category: 'speakers',
         image: {
           mobile: generateSuggestionImagePath('zx9-speaker', 'mobile'),
           tablet: generateSuggestionImagePath('zx9-speaker', 'tablet'),
@@ -171,6 +188,11 @@ const Products = [
         'xx99-mark-one-headphones',
 
         'desktop',
+      ),
+      tabletPreview: generateImagePath(
+        'xx99-mark-one-headphones',
+        'tablet',
+        '-preview',
       ),
     },
     newProduct: false,
@@ -235,6 +257,7 @@ const Products = [
       {
         slug: 'xx99-mark-two-headphones',
         name: 'XX99 Mark II Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-two-headphones',
@@ -253,6 +276,7 @@ const Products = [
       {
         slug: 'xx59-headphones',
         name: 'XX59 Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath('xx59-headphones', 'mobile'),
           tablet: generateSuggestionImagePath('xx59-headphones', 'tablet'),
@@ -262,6 +286,7 @@ const Products = [
       {
         slug: 'zx7-speaker',
         name: 'ZX7 Speaker',
+        category: 'speakers',
         image: {
           mobile: generateSuggestionImagePath('zx7-speaker', 'mobile'),
           tablet: generateSuggestionImagePath('zx7-speaker', 'tablet'),
@@ -290,6 +315,7 @@ const Products = [
 
         'desktop',
       ),
+      tabletPreview: generateImagePath('xx59-headphones', 'tablet', '-preview'),
     },
     newProduct: false,
     description:
@@ -337,6 +363,7 @@ const Products = [
       {
         slug: 'xx99-mark-two-headphones',
         name: 'XX99 Mark II Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-two-headphones',
@@ -355,6 +382,7 @@ const Products = [
       {
         slug: 'xx99-mark-one-headphones',
         name: 'XX99 Mark I Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-one-headphones',
@@ -373,6 +401,7 @@ const Products = [
       {
         slug: 'zx7-speaker',
         name: 'ZX7 Speaker',
+        category: 'speakers',
         image: {
           mobile: generateSuggestionImagePath('zx7-speaker', 'mobile'),
           tablet: generateSuggestionImagePath('zx7-speaker', 'tablet'),
@@ -393,6 +422,7 @@ const Products = [
 
         'desktop',
       ),
+      tabletPreview: generateImagePath('zx9-speaker', 'tablet', '-preview'),
     },
     newProduct: true,
     description:
@@ -444,6 +474,7 @@ const Products = [
       {
         slug: 'zx7-speaker',
         name: 'ZX7 Speaker',
+        category: 'speakers',
         image: {
           mobile: generateSuggestionImagePath('zx7-speaker', 'mobile'),
           tablet: generateSuggestionImagePath('zx7-speaker', 'tablet'),
@@ -453,6 +484,7 @@ const Products = [
       {
         slug: 'xx99-mark-one-headphones',
         name: 'XX99 Mark I Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-one-headphones',
@@ -471,6 +503,7 @@ const Products = [
       {
         slug: 'xx59-headphones',
         name: 'XX59 Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath('xx59-headphones', 'mobile'),
           tablet: generateSuggestionImagePath('xx59-headphones', 'tablet'),
@@ -491,6 +524,7 @@ const Products = [
 
         'desktop',
       ),
+      tabletPreview: generateImagePath('zx7-speaker', 'tablet', '-preview'),
     },
     newProduct: false,
     description:
@@ -542,6 +576,7 @@ const Products = [
       {
         slug: 'zx9-speaker',
         name: 'ZX9 Speaker',
+        category: 'speakers',
         image: {
           mobile: generateSuggestionImagePath('zx9-speaker', 'mobile'),
           tablet: generateSuggestionImagePath('zx9-speaker', 'tablet'),
@@ -551,6 +586,7 @@ const Products = [
       {
         slug: 'xx99-mark-one-headphones',
         name: 'XX99 Mark I Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-one-headphones',
@@ -569,6 +605,7 @@ const Products = [
       {
         slug: 'xx59-headphones',
         name: 'XX59 Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath('xx59-headphones', 'mobile'),
           tablet: generateSuggestionImagePath('xx59-headphones', 'tablet'),
@@ -580,23 +617,24 @@ const Products = [
   {
     id: 6,
     name: 'YX1 WIRELESS EARPHONES',
-    slug: 'yx1-wireless-earphones',
+    slug: 'yx1-earphones',
     image: {
       mobile: generateImagePath(
-        'yx1-wireless-earphones',
+        'yx1-earphones',
 
         'mobile',
       ),
       tablet: generateImagePath(
-        'yx1-wireless-earphones',
+        'yx1-earphones',
 
         'tablet',
       ),
       desktop: generateImagePath(
-        'yx1-wireless-earphones',
+        'yx1-earphones',
 
         'desktop',
       ),
+      tabletPreview: generateImagePath('yx1-earphones', 'tablet', '-preview'),
     },
     newProduct: true,
     description:
@@ -629,25 +667,26 @@ const Products = [
     ],
     gallery: [
       {
-        mobile: generateGalleryPath('yx1-wireless-earphones', 'mobile', '1'),
-        tablet: generateGalleryPath('yx1-wireless-earphones', 'tablet', '1'),
-        desktop: generateGalleryPath('yx1-wireless-earphones', 'desktop', '1'),
+        mobile: generateGalleryPath('yx1-earphones', 'mobile', '1'),
+        tablet: generateGalleryPath('yx1-earphones', 'tablet', '1'),
+        desktop: generateGalleryPath('yx1-earphones', 'desktop', '1'),
       },
       {
-        mobile: generateGalleryPath('yx1-wireless-earphones', 'mobile', '2'),
-        tablet: generateGalleryPath('yx1-wireless-earphones', 'tablet', '2'),
-        desktop: generateGalleryPath('yx1-wireless-earphones', 'desktop', '2'),
+        mobile: generateGalleryPath('yx1-earphones', 'mobile', '2'),
+        tablet: generateGalleryPath('yx1-earphones', 'tablet', '2'),
+        desktop: generateGalleryPath('yx1-earphones', 'desktop', '2'),
       },
       {
-        mobile: generateGalleryPath('yx1-wireless-earphones', 'mobile', '3'),
-        tablet: generateGalleryPath('yx1-wireless-earphones', 'tablet', '3'),
-        desktop: generateGalleryPath('yx1-wireless-earphones', 'desktop', '3'),
+        mobile: generateGalleryPath('yx1-earphones', 'mobile', '3'),
+        tablet: generateGalleryPath('yx1-earphones', 'tablet', '3'),
+        desktop: generateGalleryPath('yx1-earphones', 'desktop', '3'),
       },
     ],
     suggestions: [
       {
         slug: 'xx99-mark-one-headphones',
         name: 'XX99 Mark I Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath(
             'xx99-mark-one-headphones',
@@ -666,6 +705,7 @@ const Products = [
       {
         slug: 'xx59-headphones',
         name: 'XX59 Headphones',
+        category: 'headphones',
         image: {
           mobile: generateSuggestionImagePath('xx59-headphones', 'mobile'),
           tablet: generateSuggestionImagePath('xx59-headphones', 'tablet'),
@@ -675,122 +715,11 @@ const Products = [
       {
         slug: 'zx7-speaker',
         name: 'ZX7 Speaker',
+        category: 'speakers',
         image: {
           mobile: generateSuggestionImagePath('zx7-speaker', 'mobile'),
           tablet: generateSuggestionImagePath('zx7-speaker', 'tablet'),
           desktop: generateSuggestionImagePath('zx7-speaker', 'desktop'),
-        },
-      },
-    ],
-  },
-  {
-    id: 7,
-    name: 'ZX9 SPEAKER',
-    image: {
-      mobile: generateImagePath(
-        'zx9-speaker',
-
-        'mobile',
-      ),
-      tablet: generateImagePath(
-        'zx9-speaker',
-
-        'tablet',
-      ),
-      desktop: generateImagePath(
-        'zx9-speaker',
-
-        'desktop',
-      ),
-    },
-    newProduct: true,
-    description:
-      'Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.',
-    price: 4500,
-    category: 'speakers',
-    includes: [
-      {
-        quantity: 2,
-        item: 'Speaker unit',
-      },
-      {
-        quantity: 2,
-        item: 'Speaker cloth panel',
-      },
-      {
-        quantity: 1,
-        item: 'User manual',
-      },
-      {
-        quantity: 1,
-        item: '3.5mm 10m audio cable',
-      },
-      {
-        quantity: 1,
-        item: '10m optical cable',
-      },
-    ],
-    gallery: [
-      {
-        mobile: generateGalleryPath('zx9-earphones', 'mobile', '1'),
-        tablet: generateGalleryPath('zx9-earphones', 'tablet', '1'),
-        desktop: generateGalleryPath('zx9-earphones', 'desktop', '1'),
-      },
-      {
-        mobile: generateGalleryPath('zx9-earphones', 'mobile', '2'),
-        tablet: generateGalleryPath('zx9-earphones', 'tablet', '2'),
-        desktop: generateGalleryPath('zx9-earphones', 'desktop', '2'),
-      },
-      {
-        mobile: generateGalleryPath('zx9-earphones', 'mobile', '3'),
-        tablet: generateGalleryPath('zx9-earphones', 'tablet', '3'),
-        desktop: generateGalleryPath('zx9-earphones', 'desktop', '3'),
-      },
-    ],
-    suggestions: [
-      {
-        slug: 'xx99-mark-two-headphones',
-        name: 'XX99 Mark II Headphones',
-        image: {
-          mobile: generateSuggestionImagePath(
-            'xx99-mark-two-headphones',
-            'mobile',
-          ),
-          tablet: generateSuggestionImagePath(
-            'xx99-mark-two-headphones',
-            'tablet',
-          ),
-          desktop: generateSuggestionImagePath(
-            'xx99-mark-two-headphones',
-            'desktop',
-          ),
-        },
-      },
-      {
-        slug: 'xx99-mark-one-headphones',
-        name: 'XX99 Mark I Headphones',
-        image: {
-          mobile: generateSuggestionImagePath(
-            'xx99-mark-one-headphones',
-            'mobile',
-          ),
-          tablet: generateSuggestionImagePath(
-            'xx99-mark-one-headphones',
-            'tablet',
-          ),
-          desktop: generateSuggestionImagePath(
-            'xx99-mark-one-headphones',
-            'desktop',
-          ),
-        },
-      },
-      {
-        slug: 'xx59-headphones',
-        name: 'XX59 Headphones',
-        image: {
-          mobile: generateSuggestionImagePath('xx59-headphones', 'mobile'),
-          tablet: generateSuggestionImagePath('xx59-headphones', 'tablet'),
-          desktop: generateSuggestionImagePath('xx59-headphones', 'desktop'),
         },
       },
     ],

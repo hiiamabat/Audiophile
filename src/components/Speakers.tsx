@@ -1,35 +1,50 @@
 import * as React from 'react';
-import Products from './ProductsData';
+import { useNavigate } from 'react-router-dom';
 import Product from './Product';
 import CategoryCards from './CategoryCards';
 import AudioGear from './AudioGear';
+import Products from './ProductsData';
 
 const Speakers: React.FC = () => {
-  const speakers = Products.filter((product) => {
-    return product.category === 'speakers';
-  });
+  const navigate = useNavigate();
+  const speakers = Products.filter(
+    (product) => product.category === 'speakers',
+  );
+
+  const handleProductClick = (slug?: string) => {
+    if (slug) {
+      navigate(`/speakers/${slug}`);
+    }
+  };
 
   return (
     <main>
-      <section className="bg-black text-white px-4 py-6 flex flex-col">
-        <h1 className="text-2xl font-bold text-center tracking-widest sm:text-3xl sm:p-10">
+      <section className="flex flex-col px-4 py-6 text-white bg-black">
+        <h1 className="text-2xl font-bold tracking-widest text-center sm:text-3xl sm:p-10">
           SPEAKERS
         </h1>
       </section>
-      {speakers.map((speaker, index) => (
-        <Product
-          key={speaker.id}
-          imageMobile={speaker.imageMobile}
-          imageTablet={speaker.imageTablet}
-          imageDesktop={speaker.imageDesktop}
-          title={speaker.name}
-          newProduct={speaker.newProduct}
-          content={speaker.content}
-          linkTo={speaker.linkTo}
-          isFlipped={index % 2 !== 0}
-        />
-      ))}
-
+      <section>
+        {speakers.map((speaker, index) => (
+          <div
+            key={speaker.id}
+            onClick={() => handleProductClick(speaker.slug)}
+          >
+            <Product
+              name={speaker.name}
+              slug={speaker.slug || ''}
+              image={{
+                mobile: speaker.image.mobile,
+                tablet: speaker.image.tablet,
+                desktop: speaker.image.desktop,
+              }}
+              newProduct={speaker.newProduct}
+              description={speaker.description}
+              isFlipped={index % 2 !== 0}
+            />
+          </div>
+        ))}
+      </section>
       <CategoryCards />
       <AudioGear />
     </main>

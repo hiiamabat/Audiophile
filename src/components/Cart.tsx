@@ -13,7 +13,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className="container mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-5">Cart</h1>
+      <h1 className="mb-5 text-2xl font-bold">Cart</h1>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (

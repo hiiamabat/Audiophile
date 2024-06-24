@@ -16,77 +16,77 @@ const Nav: React.FC = () => {
 
   return (
     <header className="bg-black">
-      <nav className="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8 border-solid border-b-1 border-secondary-medium xl:px-0 py-6">
+      <nav className="px-4 py-5 py-6 mx-auto border-solid max-w-7xl sm:px-6 lg:px-8 border-b-1 border-secondary-medium xl:px-0">
         <div className="flex items-center justify-between h-16">
           {/* Left side (Menu button) */}
-          <div className="flex items-center md:flex-grow-0 xl:hidden relative">
+          <div className="relative flex items-center md:flex-grow-0 xl:hidden">
             <button
               onClick={toggleMenu}
-              className="text-gray-300 hover:text-white relative"
+              className="relative text-gray-300 hover:text-white"
             >
               <img
                 src={menuIcon}
                 alt="Menu"
-                className="h-6 w-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
+                className="w-6 h-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
               />
               <img
                 src={menuIconHover}
                 alt="Menu Hover"
-                className="h-6 w-6 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute top-0 left-0"
+                className="absolute top-0 left-0 w-6 h-6 transition-opacity duration-300 opacity-0 hover:opacity-100"
               />
             </button>
           </div>
 
           {/* Center (Logo) */}
-          <div className="flex justify-center md:justify-start xl:ml-6">
+          <div className="flex justify-center md:justify-start">
             <Link to="/">
-              <img src={logo} alt="Logo" className="h-8 w-auto" />
+              <img src={logo} alt="Logo" className="w-auto h-8" />
             </Link>
           </div>
 
           {/* Center (Nav at xl screens) */}
-          <div className="hidden xl:flex items-center justify-center md:justify-start">
+          <div className="items-center justify-center hidden xl:flex md:justify-start">
             <Link
               to="/"
-              className="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-bold tracking-widest"
+              className="px-3 py-2 text-sm font-bold tracking-widest text-white rounded-md hover:text-primary"
             >
               HOME
             </Link>
             <Link
               to="/headphones"
-              className="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-bold tracking-widest"
+              className="px-3 py-2 text-sm font-bold tracking-widest text-white rounded-md hover:text-primary"
             >
               HEADPHONES
             </Link>
             <Link
               to="/speakers"
-              className="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-bold tracking-widest"
+              className="px-3 py-2 text-sm font-bold tracking-widest text-white rounded-md hover:text-primary"
             >
               SPEAKERS
             </Link>
             <Link
               to="/earphones"
-              className="text-white hover:text-primary px-3 py-2 rounded-md text-sm font-bold tracking-widest"
+              className="px-3 py-2 text-sm font-bold tracking-widest text-white rounded-md hover:text-primary"
             >
               EARPHONES
             </Link>
           </div>
 
           {/* Right side (Cart icon) */}
-          <div className="flex items-center md:flex-grow-0 relative">
+          <div className="relative flex items-center md:flex-grow-0">
             <Link
               to="/cart"
-              className="text-gray-300 hover:text-white relative"
+              className="relative text-gray-300 hover:text-white"
             >
               <img
                 src={cartIcon}
                 alt="Cart"
-                className="h-6 w-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
+                className="w-6 h-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
               />
               <img
                 src={cartIconHover}
                 alt="Cart Hover"
-                className="h-6 w-6 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute top-0 left-0"
+                className="absolute top-0 left-0 w-6 h-6 transition-opacity duration-300 opacity-0 hover:opacity-100"
               />
             </Link>
           </div>
@@ -97,25 +97,25 @@ const Nav: React.FC = () => {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               to="/"
-              className="text-white hover:text-primary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:text-secondary-black hover:bg-primary hover:text-white"
             >
               HOME
             </Link>
             <Link
               to="/headphones"
-              className="text-white hover:text-primary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:text-secondary-black hover:bg-primary hover:text-white"
             >
               HEADPHONES
             </Link>
             <Link
               to="/speakers"
-              className="text-white hover:text-primary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:text-secondary-black hover:bg-primary hover:text-white"
             >
               SPEAKERS
             </Link>
             <Link
               to="/earphones"
-              className="text-white hover:text-primary hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:text-secondary-black hover:bg-primary hover:text-white"
             >
               EARPHONES
             </Link>

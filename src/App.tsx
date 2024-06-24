@@ -12,6 +12,7 @@ import NotFound from './components/NotFound';
 import ProductDetailPage from './components/ProductDetailPage';
 import { CartProvider } from './components/CartContext';
 import ErrorBoundary from './components/ErrorBoundary';
+import ScrollToTop from './components/ScrollToTop';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ const App: React.FC = () => {
   return (
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <Nav />
         <ErrorBoundary>
           <Routes>
