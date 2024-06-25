@@ -35,7 +35,7 @@ const Speakers: React.FC = () => {
               slug={speaker.slug || ''}
               image={{
                 mobile: speaker.image.mobile,
-                tablet: speaker.image.tablet,
+                tablet: speaker.image.tabletPreview,
                 desktop: speaker.image.desktop,
               }}
               newProduct={speaker.newProduct}

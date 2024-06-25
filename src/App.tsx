@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import Headphones from './components/Headphones';
 import Speakers from './components/Speakers';
 import Earphones from './components/Earphones';
-import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import NotFound from './components/NotFound';
 import ProductDetailPage from './components/ProductDetailPage';
@@ -31,7 +30,6 @@ const App: React.FC = () => {
             <Route path="/speakers/:id" element={<ProductDetailPage />} />
             <Route path="/earphones" element={<Earphones />} />
             <Route path="/earphones/:id" element={<ProductDetailPage />} />
-            <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

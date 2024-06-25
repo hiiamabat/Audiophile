@@ -19,8 +19,8 @@ const Headphones: React.FC = () => {
 
   return (
     <main>
-      <section className="bg-black text-white px-4 py-6 flex flex-col">
-        <h1 className="text-2xl font-bold text-center tracking-widest sm:text-3xl sm:p-10">
+      <section className="flex flex-col px-4 py-6 text-white bg-black">
+        <h1 className="text-2xl font-bold tracking-widest text-center sm:text-3xl sm:p-10">
           HEADPHONES
         </h1>
       </section>
@@ -35,7 +35,7 @@ const Headphones: React.FC = () => {
               slug={headphone.slug || ''}
               image={{
                 mobile: headphone.image.mobile,
-                tablet: headphone.image.tablet,
+                tablet: headphone.image.tabletPreview,
                 desktop: headphone.image.desktop,
               }}
               newProduct={headphone.newProduct}

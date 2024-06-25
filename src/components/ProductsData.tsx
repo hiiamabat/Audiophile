@@ -25,9 +25,10 @@ interface Products {
 const generateImagePath = (
   productSlug: string,
   device: string,
-  suffix: string = '',
+  isPreview: boolean = false,
 ) => {
-  return `../src/assets/images/products/${productSlug}/${device}/product${suffix}.jpg`;
+  const previewSuffix = isPreview ? '-preview' : '';
+  return `../src/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
 };
 
 const generateGalleryPath = (
@@ -66,7 +67,7 @@ const Products = [
       tabletPreview: generateImagePath(
         'xx99-mark-two-headphones',
         'tablet',
-        '-preview',
+        true,
       ),
     },
     newProduct: true,
@@ -192,7 +193,7 @@ const Products = [
       tabletPreview: generateImagePath(
         'xx99-mark-one-headphones',
         'tablet',
-        '-preview',
+        true,
       ),
     },
     newProduct: false,
@@ -315,7 +316,7 @@ const Products = [
 
         'desktop',
       ),
-      tabletPreview: generateImagePath('xx59-headphones', 'tablet', '-preview'),
+      tabletPreview: generateImagePath('xx59-headphones', 'tablet', true),
     },
     newProduct: false,
     description:
@@ -422,7 +423,7 @@ const Products = [
 
         'desktop',
       ),
-      tabletPreview: generateImagePath('zx9-speaker', 'tablet', '-preview'),
+      tabletPreview: generateImagePath('zx9-speaker', 'tablet', true),
     },
     newProduct: true,
     description:
@@ -524,7 +525,7 @@ const Products = [
 
         'desktop',
       ),
-      tabletPreview: generateImagePath('zx7-speaker', 'tablet', '-preview'),
+      tabletPreview: generateImagePath('zx7-speaker', 'tablet', true),
     },
     newProduct: false,
     description:
@@ -634,7 +635,7 @@ const Products = [
 
         'desktop',
       ),
-      tabletPreview: generateImagePath('yx1-earphones', 'tablet', '-preview'),
+      tabletPreview: generateImagePath('yx1-earphones', 'tablet', true),
     },
     newProduct: true,
     description:

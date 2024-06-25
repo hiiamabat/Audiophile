@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Products from './ProductsData';
-import { CartContext } from './CartContext';
+import { useCart } from './CartContext';
 import CategoryCards from './CategoryCards';
 import AudioGear from './AudioGear';
+import CartModal from './CartModal';
 
 interface Product {
   id: number;
@@ -31,13 +32,14 @@ interface Product {
 }
 
 const ProductDetailPage: React.FC = () => {
+  const { addToCart } = useCart();
   const { id } = useParams<{ id: string }>();
-  const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
+  const [showCartModal, setShowCartModal] = useState(false);
 
   useEffect(() => {
     const foundProduct = Products.find((item) => item.slug === id) as
@@ -77,11 +79,15 @@ const ProductDetailPage: React.FC = () => {
   const handleAddToCart = () => {
     if (product) {
       const item = {
+        id: product.id.toString(),
         title: product.name,
         price: product.price,
         quantity: quantity,
+        image: product.image.mobile,
       };
       addToCart(item);
+      setShowCartModal(true);
+      setQuantity(1);
     }
   };
 
@@ -257,6 +263,10 @@ const ProductDetailPage: React.FC = () => {
         <CategoryCards />
       </div>
       <AudioGear />
+      <CartModal
+        isOpen={showCartModal}
+        onClose={() => setShowCartModal(false)}
+      />
     </main>
   );
 };

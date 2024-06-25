@@ -6,12 +6,18 @@ import cartIcon from '../assets/images/home/mobile/cart.svg';
 import menuIcon from '../assets/images/home/mobile/menu.svg';
 import cartIconHover from '../assets/images/home/mobile/cart-orange.svg';
 import menuIconHover from '../assets/images/home/mobile/menu-orange.svg';
+import CartModal from './CartModal';
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleCartModal = () => {
+    setShowCartModal(!showCartModal);
   };
 
   return (
@@ -74,10 +80,7 @@ const Nav: React.FC = () => {
 
           {/* Right side (Cart icon) */}
           <div className="relative flex items-center md:flex-grow-0">
-            <Link
-              to="/cart"
-              className="relative text-gray-300 hover:text-white"
-            >
+            <button onClick={toggleCartModal} className="relative">
               <img
                 src={cartIcon}
                 alt="Cart"
@@ -88,7 +91,7 @@ const Nav: React.FC = () => {
                 alt="Cart Hover"
                 className="absolute top-0 left-0 w-6 h-6 transition-opacity duration-300 opacity-0 hover:opacity-100"
               />
-            </Link>
+            </button>
           </div>
         </div>
       </nav>
@@ -122,6 +125,10 @@ const Nav: React.FC = () => {
           </div>
         </div>
       )}
+      <CartModal
+        isOpen={showCartModal}
+        onClose={() => setShowCartModal(false)}
+      />
     </header>
   );
 };

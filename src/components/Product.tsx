@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 interface ProductProps {
   name: string;
   slug: string;
-  image: { mobile: string; tabletPreview: string; desktop: string };
+  image: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
   newProduct: boolean;
   description: string;
   isFlipped?: boolean;
@@ -18,8 +22,6 @@ const Product: React.FC<ProductProps> = ({
   description,
   isFlipped = false,
 }) => {
-  console.log('Image paths:', image);
-
   return (
     <section
       className={`max-w-7xl lg:mx-auto bg-white pt-20 px-3 flex flex-col mx-6 lg:flex-row lg:justify-start lg:text-left lg:items-center xl:px-0 ${isFlipped ? 'lg:flex-row-reverse' : ''}`}
@@ -27,7 +29,7 @@ const Product: React.FC<ProductProps> = ({
       <div className="w-full lg:w-1/2">
         <picture className="w-auto mx-auto mb-10 rounded-default 2xl:ml-auto 2xl:mr-0">
           <source srcSet={image.desktop} media="(min-width: 1024px)" />
-          <source srcSet={image.tabletPreview} media="(min-width: 768px)" />
+          <source srcSet={image.tablet} media="(min-width: 768px)" />
           <img
             src={image.mobile}
             alt={name}

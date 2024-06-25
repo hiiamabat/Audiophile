@@ -35,7 +35,7 @@ const Earphones: React.FC = () => {
               slug={earphone.slug || ''}
               image={{
                 mobile: earphone.image.mobile,
-                tablet: earphone.image.tablet,
+                tablet: earphone.image.tabletPreview,
                 desktop: earphone.image.desktop,
               }}
               newProduct={earphone.newProduct}
