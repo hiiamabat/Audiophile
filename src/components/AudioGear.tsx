@@ -21,7 +21,7 @@ const AudioGear: React.FC = () => {
         <h3 className="pb-4 text-3xl font-semibold tracking-wide text-secondary-black xl:text-5xl xl:w-4/5">
           BRINGING YOU THE <span className="text-primary">BEST</span> AUDIO GEAR
         </h3>
-        <p className="text-md xl:text-lg xl:w-4/5">
+        <p className="text-base xl:text-lg xl:w-4/5">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for

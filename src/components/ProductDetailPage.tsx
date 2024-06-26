@@ -10,6 +10,7 @@ import CartModal from './CartModal';
 interface Product {
   id: number;
   name: string;
+  shortenedName: string;
   slug: string;
   image: {
     mobile: string;
@@ -62,7 +63,7 @@ const ProductDetailPage: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-  const goBack = () => {
+  const handleGoBack = () => {
     navigate(-1);
   };
 
@@ -81,6 +82,7 @@ const ProductDetailPage: React.FC = () => {
       const item = {
         id: product.id.toString(),
         title: product.name,
+        shortenedName: product.shortenedName,
         price: product.price,
         quantity: quantity,
         image: product.image.mobile,
@@ -107,7 +109,7 @@ const ProductDetailPage: React.FC = () => {
     <main className="flex flex-col px-3 pt-4 mx-6 mx-auto bg-white max-w-7xl lg:mx-auto">
       <button
         className="flex justify-start mb-6 transition duration-300 ease-in-out hover:text-primary sm:text-xl sm:py-6 lg:py-12 lg:mx-6 xl:mx-0 xl:pt-12 xl:pb-0"
-        onClick={goBack}
+        onClick={handleGoBack}
       >
         Go Back
       </button>
@@ -126,32 +128,32 @@ const ProductDetailPage: React.FC = () => {
 
         <div className="flex flex-col justify-start w-full text-left sm:ml-10 sm:w-1/2 sm:justify-center lg:ml-0 lg:pl-16">
           {newProduct && (
-            <h3 className="mt-6 text-sm font-normal text-primary tracking-1em">
+            <h3 className="mt-6 font-normal text-primary tracking-1em">
               NEW PRODUCT
             </h3>
           )}
           <h2 className="py-6 text-2xl font-bold tracking-wide text-black sm:text-4xl lg:w-4/5">
             {title}
           </h2>
-          <p className="mb-6 text-sm font-normal tracking-widest text-secondary-darkest sm:w-full sm:m-0 sm:mb-8 lg:m-0 lg:mb-8">
+          <p className="mb-6 font-normal tracking-widest text-secondary-darkest sm:w-full sm:m-0 sm:mb-8 lg:m-0 lg:mb-8">
             {description}
           </p>
           <p className="font-bold text-secondary-black sm:text-xl sm:tracking-widest">
             ${price}
           </p>
           <div className="flex items-center mt-6">
-            <div className="flex items-center mr-4">
+            <div className="flex items-center px-3 py-2 mr-4 bg-secondary-darker">
               <button
-                className="px-2 py-1 text-gray-600 bg-gray-200 rounded-l hover:bg-gray-300 focus:outline-none"
+                className="px-2 py-1 text-gray-600 rounded-l hover:bg-gray-300 focus:outline-none"
                 onClick={decrementQuantity}
               >
                 -
               </button>
-              <span className="px-4 py-1 font-semibold text-gray-800 bg-gray-100">
+              <span className="px-4 py-1 font-bold bg-gray-100 text-secondary-black">
                 {quantity}
               </span>
               <button
-                className="px-2 py-1 text-gray-600 bg-gray-200 rounded-r hover:bg-gray-300 focus:outline-none"
+                className="px-2 py-1 text-gray-600 rounded-r hover:bg-gray-300 focus:outline-none"
                 onClick={incrementQuantity}
               >
                 +
@@ -168,7 +170,7 @@ const ProductDetailPage: React.FC = () => {
           <h3 className="mb-6 text-left h3-default mt-14 sm:text-3xl">
             Features
           </h3>
-          <p className="mb-8 text-sm font-normal tracking-widest text-left whitespace-pre-line text-secondary-darkest sm:w-full sm:m-0 sm:mb-10">
+          <p className="mb-8 font-normal tracking-widest text-left whitespace-pre-line text-secondary-darkest sm:w-full sm:m-0 sm:mb-10">
             {features}
           </p>
         </section>
@@ -179,10 +181,10 @@ const ProductDetailPage: React.FC = () => {
             </h3>
           </div>
           <div className="sm:w-1/2 xl:w-full">
-            <ul className="text-sm font-normal text-left text-secondary-darkest sm:w-4/5 lg:m-0">
+            <ul className="font-normal text-left text-secondary-darkest sm:w-4/5 lg:m-0">
               {included.map((item, index) => (
                 <li key={index} className="mt-2">
-                  <span className="mr-6 font-bold text-primary">
+                  <span className="mr-6 text-base font-bold text-primary">
                     {item.quantity}x
                   </span>{' '}
                   {item.item}

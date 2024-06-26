@@ -6,12 +6,12 @@ import Footer from './components/Footer';
 import Headphones from './components/Headphones';
 import Speakers from './components/Speakers';
 import Earphones from './components/Earphones';
-import Checkout from './components/Checkout';
 import NotFound from './components/NotFound';
 import ProductDetailPage from './components/ProductDetailPage';
 import { CartProvider } from './components/CartContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import ScrollToTop from './components/ScrollToTop';
+import CheckoutPage from './components/CheckoutPage';
 
 import './App.css';
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
             <Route path="/speakers/:id" element={<ProductDetailPage />} />
             <Route path="/earphones" element={<Earphones />} />
             <Route path="/earphones/:id" element={<ProductDetailPage />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ErrorBoundary>

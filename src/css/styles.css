@@ -19,4 +19,8 @@
   .gallery-image-tall {
     @apply h-[300px];
   }
+
+  .checkout-heading {
+    @apply my-6 text-lg font-semibold tracking-wide uppercase text-primary;
+  }
 }

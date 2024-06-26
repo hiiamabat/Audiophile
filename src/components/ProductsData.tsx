@@ -2,6 +2,7 @@ interface Products {
   id: number;
   slug: string;
   name: string;
+  shortenedName: string;
   image: {
     mobile: string;
     tablet: string;
@@ -47,6 +48,7 @@ const Products = [
   {
     id: 1,
     name: 'XX99 MARK II HEADPHONES',
+    shortenedName: 'XX99 MK II',
     slug: 'xx99-mark-two-headphones',
     image: {
       mobile: generateImagePath(
@@ -173,6 +175,7 @@ const Products = [
   {
     id: 2,
     name: 'XX99 MARK I HEADPHONES',
+    shortenedName: 'XX99 MARK I',
     slug: 'xx99-mark-one-headphones',
     image: {
       mobile: generateImagePath(
@@ -299,6 +302,7 @@ const Products = [
   {
     id: 3,
     name: 'XX59 HEADPHONES',
+    shortenedName: 'XX59',
     slug: 'xx59-headphones',
     image: {
       mobile: generateImagePath(
@@ -414,6 +418,7 @@ const Products = [
   {
     id: 4,
     name: 'ZX9 SPEAKER',
+    shortenedName: 'ZX9',
     slug: 'zx9-speaker',
     image: {
       mobile: generateImagePath('zx9-speaker', 'mobile'),
@@ -516,6 +521,7 @@ const Products = [
   {
     id: 5,
     name: 'ZX7 SPEAKER',
+    shortenedName: 'ZX7',
     slug: 'zx7-speaker',
     image: {
       mobile: generateImagePath('zx7-speaker', 'mobile'),
@@ -618,6 +624,7 @@ const Products = [
   {
     id: 6,
     name: 'YX1 WIRELESS EARPHONES',
+    shortenedName: 'YX1',
     slug: 'yx1-earphones',
     image: {
       mobile: generateImagePath(
