@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useCart } from './CartContext';
 import { useNavigate } from 'react-router-dom';
 import DeliveryIcon from '../assets/images/shared/tablet/Icon.png';
+import OrderConfirmationModal from './ConfirmationModal';
 
 interface CheckoutFormData {
   name: string;
@@ -18,6 +19,7 @@ interface CheckoutFormData {
 
 const CheckoutPage: React.FC = () => {
   const { cartItems } = useCart();
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const [formData, setFormData] = useState<CheckoutFormData>({
     name: '',
     email: '',
@@ -40,10 +42,22 @@ const CheckoutPage: React.FC = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (e.currentTarget.checkValidity()) {
+      console.log('Form submitted:', formData);
+      setIsConfirmationModalOpen(true);
+    } else {
+      console.log('Form has errors');
+      e.currentTarget.reportValidity();
+    }
+  };
 
-    console.log('Form submitted:', formData);
+  const handleButtonClick = () => {
+    const form = document.getElementById('checkoutForm') as HTMLFormElement;
+    if (form) {
+      form.requestSubmit();
+    }
   };
 
   const subtotal = cartItems.reduce(
@@ -68,13 +82,18 @@ const CheckoutPage: React.FC = () => {
         >
           Go Back
         </button>
-        <div className="xl:flex xl:justify-around">
-          <div className="px-8 py-8 mb-10 text-left bg-white xl:w-2/3">
+        <div className="xl:flex xl:justify-between xl:w-full">
+          <div className="px-8 py-8 mb-10 text-left bg-white xl:w-2/3 rounded-default">
             <h1 className="flex justify-start mb-4 text-3xl font-bold uppercase text-secondary-black">
               Checkout
             </h1>
-            <div className="grid grid-cols-1 gap-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1">
+              <form
+                id="checkoutForm"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                noValidate
+              >
                 <section>
                   <h2 className="checkout-heading">Billing Details</h2>
                   <div className="grid gap-4 md:grid-cols-2">
@@ -262,7 +281,8 @@ const CheckoutPage: React.FC = () => {
                             value={formData.eMoneyNumber}
                             onChange={handleInputChange}
                             className="w-full p-2 py-4 border border-gray-400 rounded-default"
-                            required
+                            required={formData.paymentMethod === 'eMoney'}
+                            pattern="[0-9]{9}"
                           />
                         </div>
                         <div>
@@ -280,7 +300,8 @@ const CheckoutPage: React.FC = () => {
                             value={formData.eMoneyPin}
                             onChange={handleInputChange}
                             className="w-full p-2 py-4 border border-gray-400 rounded-default"
-                            required
+                            required={formData.paymentMethod === 'eMoney'}
+                            pattern="[0-9]{4}"
                           />
                         </div>
                       </>
@@ -310,8 +331,8 @@ const CheckoutPage: React.FC = () => {
             </div>
           </div>
 
-          <div>
-            <div className="px-8 py-8 bg-white xl:w-full">
+          <div className="px-8 py-8 bg-white xl:w-full xl:w-1/3 xl:ml-6 rounded-default">
+            <div>
               <h2 className="mb-4 text-2xl font-semibold text-left uppercase text-secondary-black">
                 Summary
               </h2>
@@ -339,7 +360,7 @@ const CheckoutPage: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <div className="pt-6 mt-6 space-y-2 text-lg border-t">
+              <div className="pt-6 mt-6 space-y-2 text-lg">
                 <div className="flex justify-between">
                   <p className="text-gray-500 uppercase">Subtotal</p>
                   <p className="font-extrabold text-secondary-black">
@@ -358,7 +379,7 @@ const CheckoutPage: React.FC = () => {
                     ${formatPrice(vat)}
                   </p>
                 </div>
-                <div className="flex justify-between pt-4 mt-4 border-t">
+                <div className="flex justify-between pt-4 mt-4">
                   <p className="text-xl font-semibold text-primary">
                     Grand Total
                   </p>
@@ -369,11 +390,16 @@ const CheckoutPage: React.FC = () => {
               </div>
               <button
                 type="submit"
+                form="checkoutForm"
                 className="w-full mt-8 uppercase btn"
-                onClick={handleSubmit}
+                onClick={handleButtonClick}
               >
                 Continue & Pay
               </button>
+              <OrderConfirmationModal
+                isOpen={isConfirmationModalOpen}
+                onClose={() => setIsConfirmationModalOpen(false)}
+              />
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ interface CartModalProps {
 
 const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
 
@@ -35,8 +36,6 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
       onClose();
     }
   };
-
-  const navigate = useNavigate();
 
   const handleCheckout = () => {
     navigate('/checkout');
