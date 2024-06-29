@@ -33,28 +33,28 @@ export default {
       },
       backgroundImage: {
         'hero-bg-mobile':
-          "url('src/assets/images/home/mobile/image-header.jpg')",
-        'speaker-bg-mobile': "url('src/assets/images/home/mobile/bg.png')",
+          "url('../assets/images/home/mobile/image-header.jpg')",
+        'speaker-bg-mobile': "url('../assets/images/home/mobile/bg.png')",
         'speaker-pic-mobile':
-          "url('src/assets/images/home/mobile/image-speaker-zx7.jpg')",
+          "url('../assets/images/home/mobile/image-speaker-zx7.jpg')",
         'earphone-mobile':
-          "url('src/assets/images/home/mobile/image-earphones-yx1.jpg')",
+          "url('../assets/images/home/mobile/image-earphones-yx1.jpg')",
         'audio-gear-mobile':
-          "url('src/assets/images/shared/mobile/image-best-gear.jpg')",
+          "url('../assets/images/shared/mobile/image-best-gear.jpg')",
         'speaker-pic-tablet':
-          "url('src/assets/images/home/tablet/image-speaker-zx7.jpg')",
+          "url('../assets/images/home/tablet/image-speaker-zx7.jpg')",
         'hero-bg-tablet':
-          "url('src/assets/images/home/tablet/image-header.jpg')",
+          "url('../assets/images/home/tablet/image-header.jpg')",
         'speaker-bg-tablet':
-          "url('src/assets/images/home/tablet/speaker-bg.jpg')",
+          "url('../assets/images/home/tablet/speaker-bg.jpg')",
         'earphone-tablet':
-          "url('src/assets/images/home/tablet/image-earphones-yx1.jpg')",
+          "url('../assets/images/home/tablet/image-earphones-yx1.jpg')",
         'hero-bg-desktop':
-          "url('src/assets/images/home/desktop/image-hero.jpg')",
+          "url('../assets/images/home/desktop/image-hero.jpg')",
         'speaker-bg-desktop':
-          "url('src/assets/images/home/desktop/speaker-bg-desktop.jpg')",
+          "url('../assets/images/home/desktop/speaker-bg-desktop.jpg')",
         'speaker-pic-desktop':
-          "url('src/assets/images/home/desktop/image-speaker-zx7.jpg')",
+          "url('../assets/images/home/desktop/image-speaker-zx7.jpg')",
       },
       borderWidth: {
         1: '1px',

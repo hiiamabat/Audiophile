@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useCart } from './CartContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,21 +7,89 @@ interface CartModalProps {
   onClose: () => void;
 }
 
+interface CartItemType {
+  id: string;
+  title: string;
+  shortenedName: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
+
+const useFormatPrice = () => {
+  return (price: number): string => {
+    return price.toFixed(2).replace(/\.00$/, '');
+  };
+};
+
+const CartItem: React.FC<{
+  item: CartItemType;
+  onQuantityChange: (id: string, newQuantity: number) => void;
+}> = ({ item, onQuantityChange }) => {
+  const formatPrice = useFormatPrice();
+
+  return (
+    <li className="cart-item">
+      <img src={item.image} alt={item.title} className="cart-item-image" />
+      <div className="cart-item-details">
+        <h4 className="cart-item-name">{item.shortenedName}</h4>
+        <p className="cart-item-price">${formatPrice(item.price)}</p>
+      </div>
+      <div className="cart-item-quantity">
+        <button
+          onClick={() => onQuantityChange(item.id, item.quantity - 1)}
+          className="quantity-button"
+          aria-label={`Decrease quantity of ${item.shortenedName}`}
+        >
+          -
+        </button>
+        <span className="quantity-display">{item.quantity}</span>
+        <button
+          onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+          className="quantity-button"
+          aria-label={`Increase quantity of ${item.shortenedName}`}
+        >
+          +
+        </button>
+      </div>
+    </li>
+  );
+};
+
+const CartSummary: React.FC<{ total: number; onCheckout: () => void }> = ({
+  total,
+  onCheckout,
+}) => {
+  const formatPrice = useFormatPrice();
+
+  return (
+    <div className="cart-summary">
+      <div className="total-container">
+        <p className="total-label">TOTAL</p>
+        <p className="total-amount">${formatPrice(total)}</p>
+      </div>
+      <button onClick={onCheckout} className="checkout-button">
+        Checkout
+      </button>
+    </div>
+  );
+};
+
 const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
   const navigate = useNavigate();
 
+  const { total, totalQuantity } = useMemo(() => {
+    return cartItems.reduce(
+      (acc, item) => ({
+        total: acc.total + item.price * item.quantity,
+        totalQuantity: acc.totalQuantity + item.quantity,
+      }),
+      { total: 0, totalQuantity: 0 },
+    );
+  }, [cartItems]);
+
   if (!isOpen) return null;
-
-  const total = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-
-  const formatPrice = (price: number): string => {
-    return price.toFixed(2).replace(/\.00$/, '');
-  };
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
     if (newQuantity < 1) {
@@ -43,83 +111,45 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto bg-black bg-opacity-50"
+      className="cart-modal-overlay"
       onClick={handleBackgroundClick}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cart-modal-title"
     >
-      <div className="w-full max-w-md md:absolute md:top-40 md:right-20">
-        <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg">
+      <div className="cart-modal-container">
+        <div className="cart-modal">
           <button
             onClick={onClose}
-            className="absolute text-4xl font-semibold leading-none top-2 right-4 hover:text-gray-600"
+            className="close-button"
+            aria-label="Close cart"
           >
             &times;
           </button>
-          <div className="flex items-start justify-between px-12 rounded-t pt-14">
-            <h3 className="text-2xl font-semibold">Cart ({totalQuantity})</h3>
-            <button
-              onClick={clearCart}
-              className="text-gray-400 underline text-md hover:text-primary"
-            >
+          <div className="cart-header">
+            <h3 id="cart-modal-title" className="cart-title">
+              Cart ({totalQuantity})
+            </h3>
+            <button onClick={clearCart} className="remove-all-button">
               Remove all
             </button>
           </div>
-          <div className="relative py-10 max-h-[60vh] overflow-y-auto flex w-full px-8">
+          <div className="cart-items-container">
             {cartItems.length === 0 ? (
-              <p className="flex justify-center text-xl">Your cart is empty.</p>
+              <p className="empty-cart-message">Your cart is empty.</p>
             ) : (
-              <ul className="w-full space-y-10">
+              <ul className="cart-items-list">
                 {cartItems.map((item) => (
-                  <li key={item.id} className="flex items-center space-x-4">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="object-cover w-24 h-24 rounded-default"
-                    />
-                    <div className="flex-grow">
-                      <h4 className="flex justify-start text-xl font-bold text-secondary-black">
-                        {item.shortenedName}
-                      </h4>
-                      <p className="flex justify-start text-xl font-semibold tracking-wide text-gray-400">
-                        ${formatPrice(item.price)}
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-between p-1 w-28 bg-secondary-darker">
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(item.id, item.quantity - 1)
-                        }
-                        className="px-2 py-1 text-xl rounded-l text-secondary-darkest"
-                      >
-                        -
-                      </button>
-                      <span className="px-2 py-1 text-xl font-semibold text-secondary-black">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(item.id, item.quantity + 1)
-                        }
-                        className="px-2 py-1 text-xl rounded-r"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </li>
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    onQuantityChange={handleQuantityChange}
+                  />
                 ))}
               </ul>
             )}
           </div>
-          <div className="p-8 rounded-b border-blueGray-200">
-            <div className="flex justify-between mb-4">
-              <p className="pb-6 text-lg">TOTAL</p>
-              <p className="text-2xl font-extrabold text-secondary-black">
-                ${formatPrice(total)}
-              </p>
-            </div>
-            <button onClick={handleCheckout} className="w-full uppercase btn">
-              Checkout
-            </button>
-          </div>
+          <CartSummary total={total} onCheckout={handleCheckout} />
         </div>
       </div>
     </div>

@@ -1,47 +1,59 @@
 import React, { useEffect, createContext, useState, useContext } from 'react';
 
-interface CartItem {
+// Types
+type CartItem = {
   id: string;
   title: string;
   shortenedName: string;
   price: number;
   quantity: number;
   image: string;
-}
+};
 
-interface CartContextType {
+type CartContextType = {
   cartItems: CartItem[];
   addToCart: (item: Omit<CartItem, 'quantity'> & { quantity: number }) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
-}
+};
 
+// Context
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+// Helper functions
+const getInitialCart = (): CartItem[] => {
+  const savedCart = localStorage.getItem('cart');
+  return savedCart ? JSON.parse(savedCart) : [];
+};
+
+const saveCartToLocalStorage = (cartItems: CartItem[]) => {
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+};
+
+// Provider Component
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cartItems, setCartItems] = useState<CartItem[]>(getInitialCart);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    saveCartToLocalStorage(cartItems);
   }, [cartItems]);
 
   const addToCart = (
-    item: Omit<CartItem, 'quantity'> & { quantity: number },
+    newItem: Omit<CartItem, 'quantity'> & { quantity: number },
   ) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.id === item.id);
+      const existingItem = prevItems.find((item) => item.id === newItem.id);
       if (existingItem) {
-        return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i,
+        return prevItems.map((item) =>
+          item.id === newItem.id
+            ? { ...item, quantity: item.quantity + newItem.quantity }
+            : item,
         );
       }
-      return [...prevItems, { ...item, quantity: item.quantity }];
+      return [...prevItems, newItem as CartItem];
     });
   };
 
@@ -59,25 +71,22 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const clearCart = () => {
-    setCartItems([]);
+  const clearCart = () => setCartItems([]);
+
+  const contextValue: CartContextType = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
   };
 
   return (
-    <CartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
 };
 
+// Custom hook
 export const useCart = () => {
   const context = useContext(CartContext);
   if (context === undefined) {
