@@ -6,7 +6,7 @@ import audioGearImageDesktop from '../assets/images/shared/desktop/image-best-ge
 const AudioGear: React.FC = () => {
   return (
     <section className="audio-gear-section" aria-labelledby="audio-gear-title">
-      <div className="image-container">
+      <div className="audio-gear-image-container">
         <picture>
           <source media="(min-width: 1024px)" srcSet={audioGearImageDesktop} />
           <source media="(min-width: 640px)" srcSet={audioGearImageTablet} />
@@ -17,11 +17,11 @@ const AudioGear: React.FC = () => {
           />
         </picture>
       </div>
-      <div className="content-container">
+      <div className="audio-gear-content-container">
         <h2 id="audio-gear-title" className="title">
           BRINGING YOU THE <span className="highlight">BEST</span> AUDIO GEAR
         </h2>
-        <p className="description">
+        <p className="audio-gear-description">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for

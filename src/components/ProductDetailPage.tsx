@@ -47,7 +47,7 @@ interface SuggestionItem {
 
 // Helper Components
 const SkipLink: React.FC = () => (
-  <a href="#main-content" className="skip-link">
+  <a href="#main-content" className="skip-link visually-hidden">
     Skip to main content
   </a>
 );
@@ -197,14 +197,14 @@ const ProductImage: React.FC<{ images: Product['image']; title: string }> = ({
   images,
   title,
 }) => (
-  <div className="product-image">
+  <div className="product-detail-image">
     <picture>
       <source media="(min-width: 1024px)" srcSet={images.desktop} />
       <source media="(min-width: 640px)" srcSet={images.tablet} />
       <img
         src={images.mobile}
         alt={`${title} product`}
-        className="product-img"
+        className="product-detail-img"
       />
     </picture>
   </div>
@@ -225,14 +225,16 @@ const ProductInfo: React.FC<{
   mainHeadingRef,
   addToCartButtonRef,
 }) => (
-  <div className="product-info">
+  <div className="product-detail-info">
     {product.newProduct && <p className="new-product-label">NEW PRODUCT</p>}
-    <h1 ref={mainHeadingRef} tabIndex={-1} className="product-title">
+    <h1 ref={mainHeadingRef} tabIndex={-1} className="product-detail-title">
       {product.name}
     </h1>
-    <p className="product-description">{product.description}</p>
-    <p className="product-price">${product.price}</p>
+    <p className="product-detail-description">{product.description}</p>
+    <p className="product-detail-price">${product.price}</p>
+
     <QuantitySelector quantity={quantity} onQuantityChange={onQuantityChange} />
+
     <button
       ref={addToCartButtonRef}
       className="add-to-cart-button"

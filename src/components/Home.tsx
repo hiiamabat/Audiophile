@@ -20,9 +20,9 @@ const HeroSection: React.FC = () => (
         <h1 id="hero-title" className="sr-only">
           Audiophile Home Page
         </h1>
-        <p className="new-product-label">NEW PRODUCT</p>
-        <h2 className="product-title">XX99 Mark II Headphones</h2>
-        <p className="product-description">
+        <p className="hero-new-product-label">NEW PRODUCT</p>
+        <h2 className="hero-product-title">XX99 Mark II Headphones</h2>
+        <p className="hero-product-description">
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>

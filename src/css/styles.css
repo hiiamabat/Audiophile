@@ -9,27 +9,9 @@
 }
 
 @layer components {
+  /* Typography */
   .h3-default {
     @apply text-xl text-secondary-black font-bold uppercase tracking-wide;
-  }
-  .btn {
-    @apply bg-primary py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light hover:text-secondary-black transition duration-300 ease-in-out py-3 px-6;
-  }
-
-  .gallery-image-tall {
-    @apply h-[300px];
-  }
-
-  .hero-section {
-    @apply bg-hero-bg-mobile bg-cover bg-bottom bg-black text-white py-20 px-4 h-fit xs:h-[40vh] sm:flex sm:items-center sm:justify-between sm:flex-col sm:bg-hero-bg-tablet sm:h-[50vh] md:h-[45vh] md:justify-center lg:h-[55vh] xl:bg-hero-bg-desktop xl:flex-row;
-  }
-
-  .hero-content {
-    @apply mx-auto max-w-7xl xl:flex xl:w-full;
-  }
-
-  .hero-text-container {
-    @apply flex flex-col items-center justify-center xl:justify-start xl:flex-col xl:items-start xl:w-1/2 xl:text-left xl:px-4;
   }
 
   .new-product-label {
@@ -44,13 +26,85 @@
     @apply w-3/5 m-auto mb-8 text-lg text-secondary-light sm:w-3/4 sm:text-xl md:w-7/12 md:m-0 md:mb-8 xl:text-left;
   }
 
+  .checkout-heading {
+    @apply my-6 text-lg font-semibold tracking-wide uppercase text-primary;
+  }
+
+  /* Buttons */
   .btn {
-    @apply py-4 text-sm font-normal tracking-widest text-white transition duration-300 ease-in-out bg-primary hover:bg-primary-light hover:text-secondary-black px-7;
+    @apply uppercase bg-primary py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light hover:text-secondary-black transition duration-300 ease-in-out py-3 px-6;
+  }
+
+  .btn-dark {
+    @apply py-4 text-sm font-normal tracking-widest text-white transition duration-300 ease-in-out bg-secondary-black hover:bg-secondary-medium px-7;
+  }
+
+  .btn-outline {
+    @apply bg-transparent px-6 py-3 text-sm font-bold tracking-wide transition duration-300 ease-in-out border-solid border-1 border-secondary-black text-secondary-black hover:bg-primary;
+  }
+
+  /* Accessibility */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .visually-hidden:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    z-index: 9999;
+  }
+
+  .gallery-image-tall {
+    @apply h-[300px];
+  }
+
+  /* Hero Section */
+
+  .hero-section {
+    @apply bg-hero-bg-mobile bg-cover bg-bottom bg-black text-white py-20 px-4 h-fit xs:h-[40vh] sm:flex sm:items-center sm:justify-between sm:flex-col sm:bg-hero-bg-tablet sm:h-[50vh] md:h-[45vh] md:justify-center lg:h-[55vh] xl:bg-hero-bg-desktop xl:flex-row;
+  }
+
+  .hero-content {
+    @apply mx-auto max-w-7xl xl:flex xl:w-full;
+  }
+
+  .hero-text-container {
+    @apply flex flex-col items-center justify-center xl:justify-start xl:flex-col xl:items-start xl:w-1/2 xl:text-left xl:px-4;
+  }
+
+  .hero-new-product-label {
+    @apply pb-4 text-sm font-semibold text-secondary-darkest tracking-1em;
+  }
+
+  .hero-product-title {
+    @apply mb-4 text-4xl font-semibold text-white uppercase sm:text-5xl lg:text-7xl md:w-3/4 xl:text-left;
+  }
+
+  .hero-product-description {
+    @apply w-4/5 m-auto mb-10 text-lg text-secondary-light sm:w-3/4 sm:text-xl md:w-7/12 md:m-0 md:mb-8 xl:text-left;
   }
 
   .hero-image {
     @apply xl:w-1/2 xl:h-full;
   }
+
+  /* ZX9 Speaker Section */
 
   .zx9-speaker-section {
     @apply max-w-7xl rounded-default bg-primary bg-cover bg-speaker-bg-mobile bg-center text-white py-20 mx-3 sm:bg-[center_top_-6rem] md:bg-speaker-bg-tablet md:mx-10 xl:m-auto 2xl:flex 2xl:justify-center 2xl:items-center 2xl:bg-speaker-bg-desktop 2xl:bg-bottom 2xl:p-0;
@@ -76,21 +130,21 @@
     @apply w-4/5 m-auto mb-8 text-lg text-white md:w-1/2 md:my-8 lg:text-xl 2xl:m-0 2xl:mb-8;
   }
 
-  .btn-dark {
-    @apply py-4 text-sm font-normal tracking-widest text-white transition duration-300 ease-in-out bg-secondary-black hover:bg-secondary-medium px-7;
-  }
+  /* ZX7 Speaker Section */
 
   .zx7-speaker-section {
     @apply relative flex px-6 pb-20 m-auto mx-3 mt-8 bg-right-top bg-cover rounded-lg max-w-7xl bg-speaker-pic-mobile xs:bg-speaker-pic-tablet xs:bg-cover xs:bg-center h-96 md:mx-10 xl:m-auto xl:mt-10 xl:bg-speaker-pic-desktop;
   }
 
   .zx7-speaker-content {
-    @apply absolute top-[30%] flex justify-start items-start flex-col 2xl:p-20 2xl:top-14;
+    @apply absolute top-[30%] flex justify-start items-start flex-col md:ml-8 xl:ml-24 2xl:p-20 2xl:top-14;
   }
 
   .zx7-speaker-title {
-    @apply pb-4 text-2xl font-bold tracking-widest text-black uppercase justify-start md:text-3xl md:mb-6;
+    @apply pb-4 text-2xl md:text-3xl font-bold tracking-widest text-black uppercase justify-start md:text-3xl md:mb-6;
   }
+
+  /* Earphones Section */
 
   .earphones-section {
     @apply my-6 mx-3 max-w-7xl md:flex xl:justify-center xl:items-center xl:m-auto xl:my-8;
@@ -105,19 +159,18 @@
   }
 
   .earphone-content {
-    @apply w-full flex flex-col flex-wrap justify-center content-center;
+    @apply w-full flex flex-col flex-wrap justify-center items-start pl-8 lg:ml-10 xl:ml-24;
   }
 
   .earphone-title {
-    @apply mb-6 text-2xl font-bold tracking-widest text-black uppercase;
+    @apply mb-6 md:mb-10 text-2xl md:text-3xl font-bold tracking-widest text-black uppercase;
   }
 
-  .btn-outline {
-    @apply bg-transparent px-6 py-3 text-sm font-bold tracking-wide transition duration-300 ease-in-out border-solid border-1 border-secondary-black text-secondary-black hover:bg-primary;
-  }
+  /* Category Cards */
 
-  .checkout-heading {
-    @apply my-6 text-lg font-semibold tracking-wide uppercase text-primary;
+  .category-section {
+    @apply flex flex-col px-3 pt-10 pb-20 bg-white max-w-7xl sm:flex-row sm:pt-10 sm:w-full 
+           sm:justify-between sm:m-0 md:w-auto md:mx-6 md:m-auto lg:mx-auto;
   }
 
   .category-card {
@@ -154,16 +207,13 @@
     @apply ml-1 text-xl font-semibold text-primary;
   }
 
-  .category-section {
-    @apply flex flex-col px-3 pt-10 pb-20 bg-white max-w-7xl sm:flex-row sm:pt-10 sm:w-full 
-           sm:justify-between sm:m-0 md:w-auto md:mx-6 md:m-auto lg:mx-auto;
-  }
+  /* Audio Gear Section */
 
   .audio-gear-section {
     @apply pt-0 pb-20 mt-20 mx-3 bg-white max-w-7xl md:mx-10 xl:mt-32 xl:p-0 xl:flex xl:flex-row-reverse xl:my-16 xl:m-auto;
   }
 
-  .image-container {
+  .audio-gear-image-container {
     @apply xl:flex xl:ml-auto;
   }
 
@@ -171,7 +221,7 @@
     @apply w-auto mx-auto mb-10 rounded-default xl:ml-auto xl:mr-0;
   }
 
-  .content-container {
+  .audio-gear-content-container {
     @apply xl:w-1/2 xl:flex xl:flex-col xl:justify-center xl:items-start xl:text-left;
   }
 
@@ -183,9 +233,12 @@
     @apply text-primary;
   }
 
-  .description {
+  .audio-gear-description {
     @apply text-base md:w-4/5 md:m-auto xl:text-lg xl:m-0;
   }
+
+  /* Cart Modal */
+
   .cart-modal-overlay {
     @apply fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto bg-black bg-opacity-50;
   }
@@ -278,6 +331,8 @@
     @apply w-full uppercase btn;
   }
 
+  /* Product Detail Page */
+
   .product-detail-page {
     @apply flex flex-col px-3 pt-4 mx-6 mx-auto bg-white max-w-7xl lg:mx-auto;
   }
@@ -286,19 +341,19 @@
     @apply flex justify-start mb-6 transition duration-300 ease-in-out hover:text-primary sm:text-xl sm:py-6 lg:py-12 lg:mx-6 xl:mx-0 xl:pt-12 xl:pb-0;
   }
 
-  .product-content {
+  .product-detail-content {
     @apply w-full sm:flex lg:mx-6 xl:mx-0 xl:py-20;
   }
 
-  .product-image {
+  .product-detail-image {
     @apply sm:w-1/2;
   }
 
-  .product-img {
+  .product-detail-img {
     @apply object-cover w-full mx-auto;
   }
 
-  .product-info {
+  .product-detail-info {
     @apply flex flex-col justify-start w-full text-left sm:ml-10 sm:w-1/2 sm:justify-center lg:ml-0 lg:pl-16;
   }
 
@@ -306,32 +361,38 @@
     @apply mt-6 font-normal text-primary tracking-1em;
   }
 
-  .product-title {
-    @apply py-6 text-2xl font-bold tracking-wide text-black sm:text-4xl lg:w-4/5;
+  .product-detail-title {
+    @apply py-6 text-3xl font-bold tracking-wide text-black lg:w-4/5 xl:text-6xl;
   }
 
-  .product-description {
+  .product-detail-description {
     @apply mb-6 font-normal tracking-widest text-secondary-darkest sm:w-full sm:m-0 sm:mb-8 lg:m-0 lg:mb-8;
   }
 
-  .product-price {
-    @apply font-bold text-secondary-black sm:text-xl sm:tracking-widest;
+  .product-detail-price {
+    @apply tracking-widest font-extrabold text-secondary-black sm:text-xl;
+  }
+
+  /* Quantity Selector */
+
+  .add-to-cart {
+    @apply flex;
   }
 
   .quantity-selector {
-    @apply flex items-center mt-6;
+    @apply bg-secondary-darker flex items-center mt-6;
   }
 
   .quantity-button {
-    @apply px-2 py-1 text-gray-600 rounded-l hover:bg-gray-300 focus:outline-none;
+    @apply px-2 py-1 rounded-l focus:outline-none;
   }
 
   .quantity-input {
-    @apply px-4 py-1 font-bold bg-gray-100 text-secondary-black;
+    @apply px-4 py-1 font-bold text-black bg-transparent;
   }
 
   .add-to-cart-button {
-    @apply uppercase btn;
+    @apply btn;
   }
 
   .gallery-section {
@@ -357,4 +418,8 @@
   .gallery-image-large {
     @apply object-cover w-full h-full rounded-lg lg:w-auto;
   }
+}
+
+.checkout-heading {
+  @apply my-6 text-lg font-semibold tracking-wide uppercase text-primary;
 }
