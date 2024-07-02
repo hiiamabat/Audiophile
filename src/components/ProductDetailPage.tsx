@@ -232,16 +232,23 @@ const ProductInfo: React.FC<{
     </h1>
     <p className="product-detail-description">{product.description}</p>
     <p className="product-detail-price">${product.price}</p>
-
-    <QuantitySelector quantity={quantity} onQuantityChange={onQuantityChange} />
-
-    <button
-      ref={addToCartButtonRef}
-      className="add-to-cart-button"
-      onClick={onAddToCart}
-    >
-      Add to Cart
-    </button>
+    <div className="detail-add-to-cart">
+      <div className="detail-quantity">
+        <QuantitySelector
+          quantity={quantity}
+          onQuantityChange={onQuantityChange}
+        />
+      </div>
+      <div>
+        <button
+          ref={addToCartButtonRef}
+          className="add-to-cart-button"
+          onClick={onAddToCart}
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
   </div>
 );
 
@@ -291,14 +298,19 @@ const ProductFeatures: React.FC<{
       <p className="features-description">{features}</p>
     </section>
     <aside className="in-the-box-section">
-      <h2 className="section-title">In the box</h2>
-      <ul className="included-items-list">
-        {included.map((item, index) => (
-          <li key={index} className="included-item">
-            <span className="item-quantity">{item.quantity}x</span> {item.item}
-          </li>
-        ))}
-      </ul>
+      <div className="in-the-box-title">
+        <h2 className="section-title">In the box</h2>
+      </div>
+      <div className="in-the-box-list">
+        <ul className="included-items-list">
+          {included.map((item, index) => (
+            <li key={index} className="included-item">
+              <span className="item-quantity">{item.quantity}x</span>{' '}
+              {item.item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </aside>
   </div>
 );
@@ -344,22 +356,30 @@ const ProductSuggestions: React.FC<{ suggestions: SuggestionItem[] }> = ({
 
   return (
     <section className="suggestions-section">
-      <h2 className="section-title">You may also like</h2>
+      <h2 className="suggestions-section-title">You may also like</h2>
       <div className="suggestions-grid">
         {suggestions.map((suggestion, index) => (
           <div key={index} className="suggestion-item">
-            <img
-              src={suggestion.image.mobile}
-              srcSet={`${suggestion.image.tablet} 640w, ${suggestion.image.desktop} 1024w`}
-              sizes="(min-width: 1024px) 512px, (min-width: 640px) 320px, 100vw"
-              alt={suggestion.name}
-              className="suggestion-image"
-            />
+            <picture className="suggestion-image">
+              <source
+                media="(min-width: 1024px)"
+                srcSet={suggestion.image.desktop}
+              />
+              <source
+                media="(min-width: 640px)"
+                srcSet={suggestion.image.tablet}
+              />
+              <img
+                src={suggestion.image.mobile}
+                alt={suggestion.name}
+                className="suggestion-image"
+              />
+            </picture>
             <h3 className="suggestion-title">
               {suggestion.name.split(' ').slice(0, -1).join(' ')}
             </h3>
             <button
-              className="see-product-button"
+              className="btn"
               onClick={() =>
                 navigate(`/${suggestion.category}/${suggestion.slug}`)
               }
