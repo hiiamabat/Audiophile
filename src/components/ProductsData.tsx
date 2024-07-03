@@ -23,13 +23,15 @@ interface Products {
   }[];
 }
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const generateImagePath = (
   productSlug: string,
   device: string,
   isPreview: boolean = false,
 ) => {
   const previewSuffix = isPreview ? '-preview' : '';
-  return `${process.env.VITE_BASE_URL}/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
+  return `${baseUrl}/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
 };
 
 const generateGalleryPath = (
@@ -37,11 +39,11 @@ const generateGalleryPath = (
   device: string,
   index: string,
 ) => {
-  return `${process.env.VITE_BASE_URL}/assets/images/products/${productSlug}/${device}/gallery/${index}.jpg`;
+  return `${baseUrl}/assets/images/products/${productSlug}/${device}/gallery/${index}.jpg`;
 };
 
 const generateSuggestionImagePath = (productSlug: string, device: string) => {
-  return `${process.env.VITE_BASE_URL}/assets/images/shared/${device}/${productSlug}.jpg`;
+  return `${baseUrl}/assets/images/shared/${device}/${productSlug}.jpg`;
 };
 
 const Products = [
