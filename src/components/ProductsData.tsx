@@ -29,7 +29,7 @@ const generateImagePath = (
   isPreview: boolean = false,
 ) => {
   const previewSuffix = isPreview ? '-preview' : '';
-  return `/src/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
+  return `/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
 };
 
 const generateGalleryPath = (
@@ -37,11 +37,11 @@ const generateGalleryPath = (
   device: string,
   index: string,
 ) => {
-  return `/src/assets/images/products/${productSlug}/${device}/gallery/${index}.jpg`;
+  return `/assets/images/products/${productSlug}/${device}/gallery/${index}.jpg`;
 };
 
 const generateSuggestionImagePath = (productSlug: string, device: string) => {
-  return `/src/assets/images/shared/${device}/${productSlug}.jpg`;
+  return `/assets/images/shared/${device}/${productSlug}.jpg`;
 };
 
 const Products = [
