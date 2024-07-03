@@ -29,7 +29,7 @@ const generateImagePath = (
   isPreview: boolean = false,
 ) => {
   const previewSuffix = isPreview ? '-preview' : '';
-  return `https://main--inquisitive-lebkuchen-3e873c.netlify.app/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
+  return `https://inquisitive-lebkuchen-3e873c.netlify.app/assets/images/products/${productSlug}/${device}/product${previewSuffix}.jpg`;
 };
 
 const generateGalleryPath = (
@@ -37,11 +37,11 @@ const generateGalleryPath = (
   device: string,
   index: string,
 ) => {
-  return `https://main--inquisitive-lebkuchen-3e873c.netlify.app/assets/images/products/${productSlug}/${device}/gallery/${index}.jpg`;
+  return `https://inquisitive-lebkuchen-3e873c.netlify.app/assets/images/products/${productSlug}/${device}/gallery/${index}.jpg`;
 };
 
 const generateSuggestionImagePath = (productSlug: string, device: string) => {
-  return `https://main--inquisitive-lebkuchen-3e873c.netlify.app/assets/images/shared/${device}/${productSlug}.jpg`;
+  return `https://inquisitive-lebkuchen-3e873c.netlify.app/assets/images/shared/${device}/${productSlug}.jpg`;
 };
 
 const Products = [
