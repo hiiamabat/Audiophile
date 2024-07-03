@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Product from './Product';
 import CategoryCards from './CategoryCards';
@@ -19,16 +19,23 @@ const Headphones: React.FC = () => {
 
   return (
     <main>
-      <section className="flex flex-col px-4 py-6 text-white bg-black">
-        <h1 className="text-2xl font-bold tracking-widest text-center sm:text-3xl sm:p-10">
-          HEADPHONES
-        </h1>
+      <section className="product-page-section">
+        <h1 className="product-page-h1">HEADPHONES</h1>
       </section>
-      <section>
+      <section aria-labelledby="headphones-list">
+        <h2 id="headphones-list" className="sr-only">
+          List of Headphones
+        </h2>
         {headphones.map((headphone, index) => (
           <div
             key={headphone.id}
+            role="button"
+            tabIndex={0}
             onClick={() => handleProductClick(headphone.slug)}
+            onKeyDown={(e) =>
+              e.key === 'Enter' && handleProductClick(headphone.slug)
+            }
+            className="cursor-pointer"
           >
             <Product
               name={headphone.name}

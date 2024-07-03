@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/shared/desktop/logo.svg';
 import fbIcon from '../assets/images/home/mobile/fb.svg';
@@ -8,99 +8,72 @@ import fbIconHover from '../assets/images/home/mobile/fb-orange.svg';
 import instaIconHover from '../assets/images/home/mobile/insta-orange.svg';
 import twitterIconHover from '../assets/images/home/mobile/twitter-orange.svg';
 
-const Footer: React.FC = () => {
-  return (
-    <footer className="bg-secondary-black px-5 md:text-left md:px-10 pb-6">
-      <div className="max-w-7xl xl:mx-auto">
-        <div className="bg-primary h-1 px-4 px-6 lg:px-8 w-24 m-auto md:m-0 md:w-24"></div>
-        <div className="xl:flex xl:justify-between xl:items-center xl:mb-6">
-          <Link to="/">
-            <img
-              src={logo}
-              alt="Audiophile Logo"
-              className="pt-6 m-auto md:m-0"
-            />
-          </Link>
+const socialIcons = [
+  { icon: fbIcon, hoverIcon: fbIconHover, alt: 'Facebook Icon', link: '/' },
+  {
+    icon: twitterIcon,
+    hoverIcon: twitterIconHover,
+    alt: 'Twitter Icon',
+    link: '/',
+  },
+  {
+    icon: instaIcon,
+    hoverIcon: instaIconHover,
+    alt: 'Instagram Icon',
+    link: '/',
+  },
+];
 
-          <ul className="text-white text-xs tracking-widest font-bold pt-6 md:flex md:gap-6 xl:text-sm">
-            <li className="py-3">
-              <Link className="hover:text-primary" to="/">
-                HOME
-              </Link>
-            </li>
-            <li className="py-3">
-              <Link className="hover:text-primary" to="/headphones">
-                HEADPHONES
-              </Link>
-            </li>
-            <li className="py-3">
-              <Link className="hover:text-primary" to="/speakers">
-                SPEAKERS
-              </Link>
-            </li>
-            <li className="pt-3 pb-6">
-              <Link className="hover:text-primary" to="/earphones">
-                EARPHONES
-              </Link>
-            </li>
+const Footer: React.FC = () => (
+  <footer className="footer-section">
+    <div className="footer-container">
+      <div className="footer-bar"></div>
+      <div className="footer-nav">
+        <Link to="/" aria-label="Audiophile Home">
+          <img src={logo} alt="Audiophile Logo" className="footer-logo" />
+        </Link>
+        <nav aria-label="Footer navigation">
+          <ul className="footer-nav-ul">
+            {['HOME', 'HEADPHONES', 'SPEAKERS', 'EARPHONES'].map(
+              (item, index) => (
+                <li className="py-3" key={index}>
+                  <Link
+                    className="hover:text-primary"
+                    to={`/${item.toLowerCase()}`}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ),
+            )}
           </ul>
-        </div>
-        <p className="text-secondary-darkest pb-6 xl:w-3/4 xl:text-lg">
-          Audiophile is an all in one stop to fulfill your audio needs. We're a
-          small team of music lovers and sound specialists who are devoted to
-          helping you get the most out of personal audio. Come and visit our
-          demo facility - we’re open 7 days a week.
-        </p>
-        <div className="md:flex md:justify-between">
-          <p className="pb-6">Copyright 2021. All Rights Reserved</p>
-          <ul className="flex gap-4 items-center justify-center md:items-start pb-6">
-            <li className="relative">
-              <Link to="/">
-                <img
-                  src={fbIcon}
-                  alt="Facebook Icon"
-                  className="h-6 w-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
-                />
-                <img
-                  src={fbIconHover}
-                  alt="Facebook Icon Hover"
-                  className="h-6 w-6 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute top-0 left-0"
-                />
-              </Link>
-            </li>
-            <li className="relative">
-              <Link to="/">
-                <img
-                  src={twitterIcon}
-                  alt="Twitter Icon"
-                  className="h-6 w-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
-                />
-                <img
-                  src={twitterIconHover}
-                  alt="Twitter Icon Hover"
-                  className="h-6 w-6 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute top-0 left-0"
-                />
-              </Link>
-            </li>
-            <li className="relative">
-              <Link to="/">
-                <img
-                  src={instaIcon}
-                  alt="Instagram Icon"
-                  className="h-6 w-6 transition-opacity duration-300 opacity-100 hover:opacity-0"
-                />
-                <img
-                  src={instaIconHover}
-                  alt="Instagram Icon Hover"
-                  className="h-6 w-6 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute top-0 left-0"
-                />
-              </Link>
-            </li>
-          </ul>
-        </div>
+        </nav>
       </div>
-    </footer>
-  );
-};
+      <p className="footer-p">
+        Audiophile is an all-in-one stop to fulfill your audio needs. We're a
+        small team of music lovers and sound specialists who are devoted to
+        helping you get the most out of personal audio. Come and visit our demo
+        facility - we’re open 7 days a week.
+      </p>
+      <div className="footer-desc">
+        <p className="pb-6">&copy; 2021 Audiophile. All Rights Reserved</p>
+        <ul className="footer-social" aria-label="Social media links">
+          {socialIcons.map(({ icon, hoverIcon, alt, link }, index) => (
+            <li className="relative" key={index}>
+              <Link to={link} aria-label={alt}>
+                <img src={icon} alt={alt} className="footer-social-icon" />
+                <img
+                  src={hoverIcon}
+                  alt={`${alt} Hover`}
+                  className="footer-social-icon-hover"
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

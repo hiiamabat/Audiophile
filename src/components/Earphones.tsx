@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Product from './Product';
 import CategoryCards from './CategoryCards';
@@ -19,16 +19,20 @@ const Earphones: React.FC = () => {
 
   return (
     <main>
-      <section className="flex flex-col px-4 py-6 text-white bg-black">
-        <h1 className="text-2xl font-bold tracking-widest text-center sm:text-3xl sm:p-10">
-          EARPHONES
-        </h1>
+      <section className="product-page-section">
+        <h1 className="product-page-h1">EARPHONES</h1>
       </section>
       <section>
         {earphones.map((earphone, index) => (
-          <div
+          <article
             key={earphone.id}
+            className="cursor-pointer"
             onClick={() => handleProductClick(earphone.slug)}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) =>
+              e.key === 'Enter' && handleProductClick(earphone.slug)
+            }
           >
             <Product
               name={earphone.name}
@@ -42,7 +46,7 @@ const Earphones: React.FC = () => {
               description={earphone.description}
               isFlipped={index % 2 !== 0}
             />
-          </div>
+          </article>
         ))}
       </section>
       <CategoryCards />

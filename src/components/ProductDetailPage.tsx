@@ -5,6 +5,7 @@ import { useCart } from './CartContext';
 import CategoryCards from './CategoryCards';
 import AudioGear from './AudioGear';
 import CartModal from './CartModal';
+import GoBack from './GoBack';
 
 // Types
 
@@ -68,7 +69,6 @@ const LoadingMessage: React.FC = () => (
 const ProductDetailPage: React.FC = () => {
   const { addToCart } = useCart();
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -102,8 +102,6 @@ const ProductDetailPage: React.FC = () => {
   if (error) return <ErrorMessage message={error} />;
   if (!product) return <LoadingMessage />;
 
-  const handleGoBack = () => navigate(-1);
-
   const handleQuantityChange = (newQuantity: number) => {
     setQuantity(Math.max(1, newQuantity));
   };
@@ -131,7 +129,7 @@ const ProductDetailPage: React.FC = () => {
     <>
       <SkipLink />
       <main id="main-content" className="product-detail-page">
-        <ProductNavigation onGoBack={handleGoBack} />
+        <GoBack />
         <ProductContent
           product={product}
           quantity={quantity}
@@ -155,15 +153,6 @@ const ProductDetailPage: React.FC = () => {
 };
 
 // Sub-components
-const ProductNavigation: React.FC<{ onGoBack: () => void }> = ({
-  onGoBack,
-}) => (
-  <nav aria-label="Breadcrumb">
-    <button className="go-back-button" onClick={onGoBack}>
-      Go Back
-    </button>
-  </nav>
-);
 
 const ProductContent: React.FC<{
   product: Product;

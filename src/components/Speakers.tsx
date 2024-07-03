@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Product from './Product';
 import CategoryCards from './CategoryCards';
@@ -11,24 +11,33 @@ const Speakers: React.FC = () => {
     (product) => product.category === 'speakers',
   );
 
-  const handleProductClick = (slug?: string) => {
-    if (slug) {
-      navigate(`/speakers/${slug}`);
-    }
-  };
+  const handleProductClick = useCallback(
+    (slug?: string) => {
+      if (slug) {
+        navigate(`/speakers/${slug}`);
+      }
+    },
+    [navigate],
+  );
 
   return (
     <main>
-      <section className="flex flex-col px-4 py-6 text-white bg-black">
-        <h1 className="text-2xl font-bold tracking-widest text-center sm:text-3xl sm:p-10">
-          SPEAKERS
-        </h1>
+      <section className="product-page-section">
+        <h1 className="product-page-h1">SPEAKERS</h1>
       </section>
       <section>
         {speakers.map((speaker, index) => (
           <div
             key={speaker.id}
             onClick={() => handleProductClick(speaker.slug)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleProductClick(speaker.slug);
+              }
+            }}
+            className="cursor-pointer"
           >
             <Product
               name={speaker.name}

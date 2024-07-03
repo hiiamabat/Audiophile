@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface ProductProps {
@@ -24,10 +24,12 @@ const Product: React.FC<ProductProps> = ({
 }) => {
   return (
     <section
-      className={`max-w-7xl lg:mx-auto bg-white pt-20 px-3 flex flex-col mx-6 lg:flex-row lg:justify-start lg:text-left lg:items-center xl:px-0 ${isFlipped ? 'lg:flex-row-reverse' : ''}`}
+      className={`product-container-section ${
+        isFlipped ? 'lg:flex-row-reverse' : ''
+      }`}
     >
-      <div className="w-full lg:w-1/2">
-        <picture className="w-auto mx-auto mb-10 rounded-default 2xl:ml-auto 2xl:mr-0">
+      <div className="product-image-container">
+        <picture className="product-image">
           <source srcSet={image.desktop} media="(min-width: 1024px)" />
           <source srcSet={image.tablet} media="(min-width: 768px)" />
           <img
@@ -37,22 +39,13 @@ const Product: React.FC<ProductProps> = ({
           />
         </picture>
       </div>
-      <div className={`w-full lg:w-1/2 ${isFlipped ? '' : 'lg:ml-20'}`}>
-        {newProduct && (
-          <h3 className="mt-6 text-sm font-normal text-primary tracking-1em">
-            NEW PRODUCT
-          </h3>
-        )}
-        <h2 className="py-6 text-2xl font-bold tracking-wide text-black sm:text-4xl lg:w-4/5">
-          {name}
-        </h2>
-        <p className="text-sm font-normal tracking-widest text-secondary-darkest sm:w-4/5 sm:m-auto lg:m-0">
-          {description}
-        </p>
-        <Link
-          to={slug}
-          className="inline-flex items-center justify-center flex-auto px-6 py-3 mx-auto my-6 text-sm font-semibold tracking-wide text-white transition duration-300 ease-in-out bg-primary hover:text-secondary-black hover:bg-primary-light"
-        >
+      <div
+        className={`w-full lg:w-1/2 text-left ${isFlipped ? '' : 'lg:ml-20'}`}
+      >
+        {newProduct && <h3 className="product-content-h3">NEW PRODUCT</h3>}
+        <h2 className="product-content-h2">{name}</h2>
+        <p className="product-description">{description}</p>
+        <Link to={slug} className="product-button">
           SEE PRODUCT
         </Link>
       </div>

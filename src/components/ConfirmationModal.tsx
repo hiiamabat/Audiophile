@@ -39,56 +39,73 @@ const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto bg-black bg-opacity-50">
-      <div className="relative w-full max-w-lg p-6 mx-auto bg-white rounded-lg shadow-xl">
-        <img src={CheckmarkIcon} alt="Checkmark" className="mb-6" />
-        <div className="text-left">
-          <h2 className="mb-4 text-3xl font-bold uppercase text-secondary-black">
+    <div
+      className="confirmation-modal"
+      role="dialog"
+      aria-labelledby="confirmation-dialog-title"
+      aria-describedby="confirmation-dialog-description"
+      aria-modal="true"
+    >
+      <div className="modal-container">
+        <img
+          src={CheckmarkIcon}
+          alt="Order confirmation checkmark"
+          className="mb-6"
+        />
+        <div className="thank-you-container">
+          <h2 id="confirmation-dialog-title" className="thank-you-text">
             Thank you <br /> for your order
           </h2>
-          <p className="mb-6 text-gray-600">
+          <p
+            id="confirmation-dialog-description"
+            className="thank-you-description"
+          >
             You will receive an email confirmation shortly.
           </p>
         </div>
-        <div className="md:flex md:w-full">
-          <div className="p-4 bg-gray-100 rounded-default md:w-1/2 md:h-32">
-            <div className="flex justify-between">
-              <div className="flex space-x-4">
-                <img
-                  src={firstItem.image}
-                  alt={firstItem.title}
-                  className="w-16 h-16"
-                />
-                <div>
-                  <p className="font-bold text-secondary-black">
-                    {firstItem.shortenedName}
-                  </p>
-                  <p className="text-sm font-semibold tracking-widest text-left text-gray-600">
-                    ${formatPrice(firstItem.price)}
-                  </p>
-                </div>
+        <div className="summary-container">
+          <div className="summary-details">
+            <div className="first-item">
+              <img
+                src={firstItem.image}
+                alt={firstItem.title}
+                className="summary-items-image"
+              />
+              <div className="item-name-price">
+                <p className="summary-items-name">{firstItem.shortenedName}</p>
+                <p className="summary-items-price">
+                  ${formatPrice(firstItem.price)}
+                </p>
               </div>
-              <p className="font-semibold">x {firstItem.quantity}</p>
+              <p className="summary-items-quantity">x {firstItem.quantity}</p>
             </div>
-            <div className="border-t border-gray-300" />
-            {remainingItemsCount > 0 && (
-              <p className="p-3 text-sm text-gray-600">
-                and {remainingItemsCount} other item
-                {remainingItemsCount > 1 ? 's' : ''}
-              </p>
-            )}
+            <div className="">
+              <div className="summary-rest-of-items" />
+              {remainingItemsCount > 0 && (
+                <p className="summary-rest-of-items-p">
+                  and {remainingItemsCount} other item
+                  {remainingItemsCount > 1 ? 's' : ''}
+                </p>
+              )}
+            </div>
           </div>
 
-          <div className="md:w-1/2">
-            <div className="p-4 mb-6 text-white bg-black rounded-b-default md:rounded-r-default md:rounded-bl-none md:h-32 md:flex md:content-center">
-              <div className="flex flex-col flex-wrap content-start justify-start">
-                <p className="m-2 uppercase text-[#828282]">Grand Total</p>
-                <p className="text-xl font-bold">$ {formatPrice(grandTotal)}</p>
+          <div className="grand-total-container">
+            <div className="grand-total-bg">
+              <div className="grand-total-content">
+                <p className="grand-total-label">Grand Total</p>
+                <p className="grand-total-amount">
+                  $ {formatPrice(grandTotal)}
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <button onClick={handleBackToHome} className="w-full uppercase btn">
+        <button
+          onClick={handleBackToHome}
+          className="w-full btn"
+          aria-label="Back to Home"
+        >
           Back to Home
         </button>
       </div>
