@@ -101,7 +101,7 @@
   }
 
   .nav-logo-container {
-    @apply flex flex-grow justify-center md:justify-start md:ml-10;
+    @apply flex justify-center ml-0 md:justify-start xl:ml-0;
   }
 
   .navigation-container {
@@ -137,7 +137,7 @@
   /* Hero Section */
 
   .hero-section {
-    @apply bg-hero-bg-mobile bg-cover bg-bottom bg-black text-white py-20 px-4 h-fit xs:h-[40vh] sm:flex sm:items-center sm:justify-between sm:flex-col sm:bg-hero-bg-tablet md:h-[55vh] md:justify-center xl:bg-hero-bg-desktop xl:flex-row;
+    @apply bg-hero-bg-mobile bg-cover bg-bottom bg-black text-white py-20 px-4 h-fit xs:h-[40vh] sm:flex sm:items-center sm:justify-between sm:flex-col sm:bg-hero-bg-tablet md:h-[55vh] md:justify-center xl:bg-hero-bg-desktop xl:flex-row xl:h-[70vh];
   }
 
   .hero-content {
@@ -167,7 +167,7 @@
   /* ZX9 Speaker Section */
 
   .zx9-speaker-section {
-    @apply max-w-7xl rounded-default bg-primary bg-cover bg-speaker-bg-mobile bg-center text-white py-20 mx-3 sm:bg-[center_top_-6rem] md:bg-speaker-bg-tablet md:mx-10 xl:m-auto xl:flex xl:justify-center xl:items-center xl:bg-speaker-bg-desktop xl:bg-bottom xl:p-0;
+    @apply max-w-7xl rounded-default bg-primary bg-cover bg-speaker-bg-mobile bg-center text-white py-20 mx-3 sm:bg-[center_top_-6rem] md:bg-speaker-bg-tablet md:mx-10 xl:m-auto xl:flex xl:justify-center xl:items-center xl:bg-speaker-bg-desktop xl:bg-bottom xl:p-0 xl:pt-24;
   }
 
   .zx9-speaker-image-container {
@@ -183,7 +183,7 @@
   }
 
   .zx9-speaker-title {
-    @apply pb-4 text-5xl font-semibold tracking-widest text-white uppercase sm:text-5xl md:text-6xl md:w-1/2 md:m-auto md:mt-10 md:pb-0 xl:m-0 xl:mb-6;
+    @apply pb-4 text-5xl font-bold tracking-wide text-white uppercase sm:text-5xl md:text-6xl md:w-1/2 md:m-auto md:mt-10 md:pb-0 xl:m-0 xl:mb-6;
   }
 
   .zx9-speaker-description {
@@ -230,7 +230,7 @@
 
   .category-section {
     @apply flex flex-col px-3 pt-10 pb-20 bg-white max-w-7xl sm:flex-row sm:pt-10 sm:w-full 
-           sm:justify-between xl:m-auto;
+           sm:justify-between xl:pt-24 xl:pb-40 xl:m-auto;
   }
 
   .category-card {
@@ -255,7 +255,7 @@
   }
 
   .shop-link {
-    @apply flex items-center justify-center px-6 py-3 mt-4 text-sm font-semibold tracking-wide 
+    @apply flex items-center justify-center px-6 py-5 text-sm font-semibold tracking-wide 
            text-secondary-darkest group-hover:text-primary;
   }
 
