@@ -19,7 +19,8 @@ const AudioGear: React.FC = () => {
       </div>
       <div className="audio-gear-content-container">
         <h2 id="audio-gear-title" className="title">
-          BRINGING YOU THE <span className="highlight">BEST</span> AUDIO GEAR
+          BRINGING YOU THE <br />
+          <span className="highlight">BEST</span> AUDIO GEAR
         </h2>
         <p className="audio-gear-description">
           Located at the heart of New York City, Audiophile is the premier store

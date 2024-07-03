@@ -54,7 +54,8 @@ const ZX9SpeakerSection: React.FC = () => (
     </div>
     <div className="zx9-speaker-content">
       <h2 id="speaker-title" className="zx9-speaker-title">
-        ZX9 Speaker
+        ZX9 <br />
+        Speaker
       </h2>
       <p className="zx9-speaker-description">
         Upgrade to premium speakers that are phenomenally built to deliver truly

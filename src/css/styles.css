@@ -44,7 +44,7 @@
   }
 
   .btn-outline {
-    @apply bg-transparent px-6 py-3 text-sm font-bold tracking-wide transition duration-300 ease-in-out border-solid border-1 border-secondary-black text-secondary-black hover:bg-primary;
+    @apply bg-transparent px-7 py-4 text-base font-bold tracking-widest transition duration-300 ease-in-out border-solid border-1 border-secondary-black text-secondary-black hover:bg-primary;
   }
 
   /* Accessibility */
@@ -101,7 +101,7 @@
   }
 
   .nav-logo-container {
-    @apply flex justify-center md:justify-start;
+    @apply flex flex-grow justify-center md:justify-start md:ml-10;
   }
 
   .navigation-container {
@@ -137,7 +137,7 @@
   /* Hero Section */
 
   .hero-section {
-    @apply bg-hero-bg-mobile bg-cover bg-bottom bg-black text-white py-20 px-4 h-fit xs:h-[40vh] sm:flex sm:items-center sm:justify-between sm:flex-col sm:bg-hero-bg-tablet md:h-[45vh] md:justify-center lg:h-[55vh] xl:bg-hero-bg-desktop xl:flex-row;
+    @apply bg-hero-bg-mobile bg-cover bg-bottom bg-black text-white py-20 px-4 h-fit xs:h-[40vh] sm:flex sm:items-center sm:justify-between sm:flex-col sm:bg-hero-bg-tablet md:h-[55vh] md:justify-center xl:bg-hero-bg-desktop xl:flex-row;
   }
 
   .hero-content {
@@ -167,27 +167,27 @@
   /* ZX9 Speaker Section */
 
   .zx9-speaker-section {
-    @apply max-w-7xl rounded-default bg-primary bg-cover bg-speaker-bg-mobile bg-center text-white py-20 mx-3 sm:bg-[center_top_-6rem] md:bg-speaker-bg-tablet md:mx-10 xl:m-auto 2xl:flex 2xl:justify-center 2xl:items-center 2xl:bg-speaker-bg-desktop 2xl:bg-bottom 2xl:p-0;
+    @apply max-w-7xl rounded-default bg-primary bg-cover bg-speaker-bg-mobile bg-center text-white py-20 mx-3 sm:bg-[center_top_-6rem] md:bg-speaker-bg-tablet md:mx-10 xl:m-auto xl:flex xl:justify-center xl:items-center xl:bg-speaker-bg-desktop xl:bg-bottom xl:p-0;
   }
 
   .zx9-speaker-image-container {
-    @apply sm:w-3/4 sm:m-auto sm:-mt-20 2xl:w-3/5 2xl:flex 2xl:flex-col 2xl:items-end 2xl:relative 2xl:overflow-hidden;
+    @apply sm:w-3/4 sm:m-auto sm:-mt-20 xl:w-3/5 xl:flex xl:flex-col xl:items-end xl:relative xl:overflow-hidden;
   }
 
   .zx9-speaker-image {
-    @apply object-cover -mt-10 w-4/5 m-auto md:w-3/5 md:-mt-20 2xl:w-4/5 2xl:mt-0 2xl:mt-auto 2xl:-mb-[5rem] 2xl:pt-[5.5rem];
+    @apply object-cover -mt-10 w-4/5 m-auto md:w-3/5 md:-mt-20 xl:w-4/5 xl:mt-0 xl:mt-auto xl:-mb-[5rem] xl:pt-[5.5rem];
   }
 
   .zx9-speaker-content {
-    @apply 2xl:w-2/5 2xl:justify-start 2xl:text-left 2xl:justify-self-start;
+    @apply xl:w-2/5 xl:justify-start xl:text-left xl:justify-self-start;
   }
 
   .zx9-speaker-title {
-    @apply pb-4 text-3xl font-semibold tracking-widest text-white uppercase sm:text-5xl md:text-6xl md:w-1/2 md:m-auto md:mt-10 md:pb-0 2xl:m-0 2xl:mb-6;
+    @apply pb-4 text-5xl font-semibold tracking-widest text-white uppercase sm:text-5xl md:text-6xl md:w-1/2 md:m-auto md:mt-10 md:pb-0 xl:m-0 xl:mb-6;
   }
 
   .zx9-speaker-description {
-    @apply w-4/5 m-auto mb-8 text-lg text-white md:w-1/2 md:my-8 lg:text-xl 2xl:m-0 2xl:mb-8;
+    @apply w-4/5 m-auto mb-8 text-lg text-white md:w-1/2 md:my-8 lg:text-xl xl:m-0 xl:mb-8;
   }
 
   /* ZX7 Speaker Section */
@@ -197,11 +197,11 @@
   }
 
   .zx7-speaker-content {
-    @apply absolute top-[30%] flex justify-start items-start flex-col md:ml-8 xl:ml-24 2xl:p-20 2xl:top-14;
+    @apply absolute top-[30%] flex justify-start items-start flex-col md:ml-8 xl:ml-24 2xl:ml-0 2xl:p-20 2xl:top-14;
   }
 
   .zx7-speaker-title {
-    @apply pb-4 text-2xl md:text-3xl font-bold tracking-widest text-black uppercase justify-start md:text-3xl md:mb-6;
+    @apply mb-8 text-3xl md:text-3xl font-bold tracking-widest text-black uppercase justify-start md:text-3xl;
   }
 
   /* Earphones Section */
@@ -223,7 +223,7 @@
   }
 
   .earphone-title {
-    @apply mb-6 md:mb-10 text-2xl md:text-3xl font-bold tracking-widest text-black uppercase;
+    @apply mb-8 md:mb-10 text-3xl md:text-3xl font-bold tracking-widest text-black uppercase;
   }
 
   /* CATEGORIES CARDS */
@@ -243,7 +243,7 @@
   }
 
   .category-image {
-    @apply absolute object-cover transition-transform duration-300 ease-in-out w-4/5 m-auto -translate-x-1/2 xs:w-2/5 -top-16 sm:w-4/5 left-1/2 md:w-3/5 lg:-top-16;
+    @apply absolute object-contain transition-transform duration-300 ease-in-out w-56 m-auto -translate-x-1/2 -top-16  left-1/2 lg:-top-16;
   }
 
   .category-image:hover {
@@ -286,7 +286,7 @@
   }
 
   .title {
-    @apply pb-4 text-3xl font-semibold tracking-wide text-secondary-black xl:text-5xl xl:w-4/5;
+    @apply mb-8 text-4xl font-bold tracking-wide text-secondary-black xl:text-5xl xl:w-4/5;
   }
 
   .highlight {
@@ -294,7 +294,7 @@
   }
 
   .audio-gear-description {
-    @apply text-base md:w-4/5 md:m-auto xl:text-lg xl:m-0;
+    @apply text-base px-4 md:w-4/5 md:m-auto xl:text-lg xl:m-0 xl:p-0;
   }
 
   /* PRODUCT PAGES */
@@ -616,11 +616,11 @@
   }
 
   .footer-nav-ul {
-    @apply pt-6 text-xs font-bold tracking-widest text-white md:flex mb-12 lg:mb-8 md:gap-6 xl:text-sm;
+    @apply pt-6 text-xs font-bold tracking-widest text-white md:mb-6 md:flex mb-12 lg:mb-8 md:gap-6 xl:text-sm;
   }
 
   .footer-p {
-    @apply pb-6 text-secondary-darkest md:text-left xl:w-3/4 xl:text-lg;
+    @apply pb-6 text-secondary-darkest md:text-left md:mb-12 xl:w-3/4 xl:text-lg;
   }
 
   .footer-desc {
