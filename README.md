@@ -85,7 +85,7 @@ Websites are never actually done!
 
 ## Author
 
-- Website - [Rachel Tschanz](rtdevcraft.com)
+- Website - [Rachel Tschanz](https://www.rtdevcraft.com)
 - Frontend Mentor - [@hiiamabat](https://www.frontendmentor.io/profile/hiiamabat)
 
 ## Acknowledgments
