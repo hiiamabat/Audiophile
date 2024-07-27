@@ -66,9 +66,9 @@ Users should be able to:
 - Followed a component-based architecture for better scalability and maintainability.
 
 5. Misc thoughts
-   -My background is design so I did use Photoshop to optimize some visuals.
-   -I also have some training on UX/UI design and was also wondering why some design decisions did not align with best practices- i.e. text size, text contrast, so instead of following perfectly I made slight changes.
-   -I can't wait to get a job so I can all the questions that AI/Google can't!
+   - My background is design so I did use Photoshop to optimize some visuals.
+   - I also have some training on UX/UI design and was also wondering why some design decisions did not align with best practices- i.e. text size, text contrast, so instead of following perfectly I made slight changes.
+   - I can't wait to get a job so I can ask the questions that AI/Google can't!
 
 Websites are never actually done!
 
