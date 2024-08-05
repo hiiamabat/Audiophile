@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import headphonesImage from '../assets/images/shared/mobile/headphones.png';
-import speakersImage from '../assets/images/shared/mobile/speakers.png';
-import earphonesImage from '../assets/images/shared/mobile/earphones.png';
+import headphonesImage from '../assets/images/shared/mobile/headphones.webp';
+import speakersImage from '../assets/images/shared/mobile/speakers.webp';
+import earphonesImage from '../assets/images/shared/mobile/earphones.webp';
 
 interface CategoryItem {
   imageSrc: string;

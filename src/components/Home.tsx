@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import speakerImage from '../assets/images/home/mobile/speakerfeatimg.png';
+import speakerImage from '../assets/images/home/mobile/speakerfeatimg.webp';
 import CategoryCards from './CategoryCards';
 import AudioGear from './AudioGear';
 
