@@ -50,7 +50,7 @@ export default {
         'earphone-tablet':
           "url('../assets/images/home/tablet/image-earphones-yx1.jpg')",
         'hero-bg-desktop':
-          "url('../assets/images/home/desktop/image-hero.jpg')",
+          "url('../assets/images/home/desktop/image-hero.webp')",
         'speaker-bg-desktop':
           "url('../assets/images/home/desktop/speaker-bg-desktop.jpg')",
         'speaker-pic-desktop':
