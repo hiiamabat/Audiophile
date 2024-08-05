@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rtdevcraft.com/audiophile/sitemap.xml
+
+# Disallow access to specific folders (uncomment if needed)
+# Disallow: /private/
+# Disallow: /admin/
+
+# Crawl-delay (uncomment and adjust if needed)
+# Crawl-delay: 10

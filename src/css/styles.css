@@ -36,7 +36,7 @@
 
   /* Buttons */
   .btn {
-    @apply uppercase bg-primary py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light hover:text-secondary-black transition duration-300 ease-in-out py-3 px-6;
+    @apply uppercase bg-[#b65f2d] py-2 px-4 text-white text-sm font-normal tracking-widest hover:bg-primary-light hover:text-secondary-black transition duration-300 ease-in-out py-3 px-6;
   }
 
   .btn-dark {
@@ -620,11 +620,11 @@
   }
 
   .footer-p {
-    @apply pb-6 text-secondary-darkest md:text-left md:mb-12 xl:w-3/4 xl:text-lg;
+    @apply pb-6 text-stone-300 md:text-left md:mb-12 md:w-1/2 xl:text-lg;
   }
 
   .footer-desc {
-    @apply md:flex md:justify-between;
+    @apply text-stone-300 md:flex md:justify-between;
   }
 
   .footer-social {
