@@ -34,6 +34,9 @@ Users should be able to:
 
 ### Screenshot
 
+![Screenshot 2024-08-05 175257](https://github.com/user-attachments/assets/84d163ad-750d-4acb-82b4-038970c0b6ab)
+
+
 ![See Screenshot](https://inquisitive-lebkuchen-3e873c.netlify.app/assets/screenshots-brtkkbog.jpg)
 
 ### Links
