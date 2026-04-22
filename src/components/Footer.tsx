@@ -8,6 +8,13 @@ import fbIconHover from '../assets/images/home/mobile/fb-orange.svg';
 import instaIconHover from '../assets/images/home/mobile/insta-orange.svg';
 import twitterIconHover from '../assets/images/home/mobile/twitter-orange.svg';
 
+const navLinks = [
+  { label: 'HOME', path: '/' },
+  { label: 'HEADPHONES', path: '/headphones' },
+  { label: 'SPEAKERS', path: '/speakers' },
+  { label: 'EARPHONES', path: '/earphones' },
+];
+
 const socialIcons = [
   { icon: fbIcon, hoverIcon: fbIconHover, alt: 'Facebook Icon', link: '/' },
   {
@@ -34,18 +41,13 @@ const Footer: React.FC = () => (
         </Link>
         <nav aria-label="Footer navigation">
           <ul className="footer-nav-ul">
-            {['HOME', 'HEADPHONES', 'SPEAKERS', 'EARPHONES'].map(
-              (item, index) => (
-                <li className="py-3" key={index}>
-                  <Link
-                    className="hover:text-primary"
-                    to={`/${item.toLowerCase()}`}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ),
-            )}
+            {navLinks.map(({ label, path }) => (
+              <li className="py-3" key={path}>
+                <Link className="hover:text-primary" to={path}>
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
